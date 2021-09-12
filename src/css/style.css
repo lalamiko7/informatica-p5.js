@@ -37,20 +37,26 @@ nav {
     margin-right: 5%;
     width: 10%;
     border: 1px solid black;
+}
+
+.nav-menu-symbool {
+    border: 1px solid black;
     cursor: pointer;
+    width: fit-content;
+    margin: auto;
 }
 
 .streepje-1, .streepje-2, .streepje-3 {
     width: 2.5vw; /* 2.2 */
     height: 0.4vw;
     background-color: #F0F7F8;
-    margin: 0.4vw 0;
-    transition: 0.4s;
+    margin: 0.4vw 0 0.4vw 0;
+    transition: 1s;
 }
 
 .nav-menu-animatie .streepje-1 {
-    -webkit-transform: rotate(-45deg) translate(-0.6vw, 0.4vw);
-    transform: rotate(-45deg) translate(-0.6vw, 0.4vw);
+    -webkit-transform: translate(0, 0.8vw) rotate(405deg);
+    transform: translate(0, 0.8vw) rotate(405deg);
 }
   
 .nav-menu-animatie .streepje-2 {
@@ -58,8 +64,8 @@ nav {
 }
   
 .nav-menu-animatie .streepje-3 {
-    -webkit-transform: rotate(45deg) translate(-0.6vw, -0.5vw);
-    transform: rotate(45deg) translate(-0.6vw, -0.5vw);
+    -webkit-transform: translate(0, -0.8vw) rotate(-405deg);
+    transform: translate(0, -0.8vw) rotate(-405deg);
 }
 
 .nav-links {
