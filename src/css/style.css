@@ -32,9 +32,36 @@ nav {
     border: 1px solid black;
 }
 
+.nav-name-animatie-in {
+    animation: nav-name-animatie-in ease 1s;
+    opacity: 100%;
+}
+
+@keyframes nav-name-animatie-in {
+    0% {
+        opacity: 0%;
+    } 100% {
+        opacity: 100%;
+    }
+}
+
+.nav-name-animatie-out {
+    animation: nav-name-animatie-out ease 0.5s;
+    opacity: 0%;
+}
+
+@keyframes nav-name-animatie-out {
+    0% {
+        opacity: 100%;
+    } 100% {
+        opacity: 0%;
+    }
+}
+
 .nav-menu {
     margin-left: 5%;
     margin-right: 5%;
+    z-index: 1;
     width: 10%;
     border: 1px solid black;
 }
@@ -47,29 +74,61 @@ nav {
 }
 
 .streepje-1, .streepje-2, .streepje-3 {
-    width: 2.5vw; /* 2.2 */
+    width: 2.5vw;
     height: 0.4vw;
     background-color: #F0F7F8;
     margin: 0.4vw 0 0.4vw 0;
     transition: 1s;
 }
 
-.nav-menu-animatie .streepje-1 {
-    -webkit-transform: translate(0, 0.8vw) rotate(405deg);
+.nav-menu-symbool-animatie .streepje-1 {
     transform: translate(0, 0.8vw) rotate(405deg);
 }
   
-.nav-menu-animatie .streepje-2 {
+.nav-menu-symbool-animatie .streepje-2 {
     opacity: 0;
 }
   
-.nav-menu-animatie .streepje-3 {
-    -webkit-transform: translate(0, -0.8vw) rotate(-405deg);
+.nav-menu-symbool-animatie .streepje-3 {
     transform: translate(0, -0.8vw) rotate(-405deg);
 }
 
 .nav-links {
-    display: none;
+    opacity: 0%;
+    margin-left: 80%;
+    position: absolute;
+
+    text-align: center;
+    width: 60%;
+    border: 1px solid black;
+}
+
+.nav-links-animatie-in {
+    animation: nav-links-animatie-in ease 0.5s forwards;
+    opacity: 100%;
+}
+
+@keyframes nav-links-animatie-in {
+    0% {
+        opacity: 0%;
+    } 100% {
+        opacity: 100%;
+        margin-left: 20%;
+    }
+}
+
+.nav-links-animatie-out {
+    animation: nav-links-animatie-out ease 0.5s;
+    opacity: 0%;
+}
+
+@keyframes nav-links-animatie-out {
+    0% {
+        opacity: 100%;
+    } 100% {
+        opacity: 0%;
+        margin-left: 100%;
+    }
 }
 
 .wrapper {
