@@ -1,7 +1,8 @@
 var nav_name_count = 0;
 var nav_links_count = 0;
 
-function nav_menu_animatie(nav_menu_symbool) {
+function nav_menu_animatie() {
+    nav_menu_symbool = document.getElementById("nav-menu-symbool");
     nav_menu_symbool.classList.toggle("nav-menu-symbool-animatie");
 
     var nav_name = document.getElementById("nav-name");
