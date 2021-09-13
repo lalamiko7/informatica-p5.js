@@ -14,6 +14,7 @@ nav {
     margin-right: 5%;
     width: 10%;
     border: 1px solid black;
+    text-align: center;
 }
 
 .nav-name {
@@ -23,12 +24,14 @@ nav {
 }
 
 .nav-name-animatie-in {
-    animation: nav-name-animatie-in ease 7s forwards;
+    animation: nav-name-animatie-in ease 5s forwards;
 }
 
 @keyframes nav-name-animatie-in {
     0% {
         opacity: 0%;
+    } 30% {
+        opacity: 0;
     } 100% {
         opacity: 100%;
     }
@@ -66,24 +69,87 @@ nav {
     height: 0.4vw;
     background-color: #F0F7F8;
     margin: 0.4vw 0 0.4vw 0;
-    transition: 1s;
 }
 
-.nav-menu-symbool-animatie .streepje-1 {
-    transform: translate(0, 0.8vw) rotate(405deg);
+.nav-menu-symbool:hover .streepje-1, .nav-menu-symbool:hover .streepje-2, .nav-menu-symbool:hover .streepje-3 {
+    background-color: #B3CDE0;
+}
+
+.nav-menu-symbool-animatie-open .streepje-1 {
+    animation: nav-menu-symbool-animatie-open-streepje-1 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-open-streepje-1 {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    } 100% {
+        transform: translate(0, 0.8vw) rotate(405deg);
+    }
 }
   
-.nav-menu-symbool-animatie .streepje-2 {
-    opacity: 0;
+.nav-menu-symbool-animatie-open .streepje-2 {
+    animation: nav-menu-symbool-animatie-open-streepje-2 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-open-streepje-2 {
+    0% {
+        opacity: 100%;
+    } 100% {
+        opacity: 0;
+    }
 }
   
-.nav-menu-symbool-animatie .streepje-3 {
-    transform: translate(0, -0.8vw) rotate(-405deg);
+.nav-menu-symbool-animatie-open .streepje-3 {
+    animation: nav-menu-symbool-animatie-open-streepje-3 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-open-streepje-3 {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    } 100% {
+        transform: translate(0, -0.8vw) rotate(-405deg);
+    }
+}
+
+.nav-menu-symbool-animatie-close .streepje-1 {
+    animation: nav-menu-symbool-animatie-close-streepje-1 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-close-streepje-1 {
+    0% {
+        transform: translate(0, 0.8vw) rotate(405deg);
+    } 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+  
+.nav-menu-symbool-animatie-close .streepje-2 {
+    animation: nav-menu-symbool-animatie-close-streepje-2 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-close-streepje-2 {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 100%;
+    }
+}
+  
+.nav-menu-symbool-animatie-close .streepje-3 {
+    animation: nav-menu-symbool-animatie-close-streepje-3 ease 1s forwards;
+}
+
+@keyframes nav-menu-symbool-animatie-close-streepje-3 {
+    0% {
+        transform: translate(0, -0.8vw) rotate(-405deg);
+    } 100% {
+        transform: translate(0, 0) rotate(0);
+    }
 }
 
 .nav-links {
     opacity: 0%;
-    margin-left: 60%;
+    margin-left: 100%;
     position: absolute;
     text-align: center;
     width: 60%;
@@ -122,6 +188,6 @@ nav {
         margin-left: 20%;
     } 100% {
         opacity: 0%;
-        margin-left: 60%;
+        margin-left: 100%;
     }
 }
