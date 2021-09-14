@@ -1,7 +1,6 @@
 nav {
     background-color: #6497B1;
     color: #F0F7F8;
-    font-family: 'Helvetica Neue';
     font-size: 2.2vw;
     width: 100%;
     height: 100px;
@@ -13,8 +12,13 @@ nav {
     margin-left: 5%;
     margin-right: 5%;
     width: 10%;
+    height: 100%;
     border: 1px solid black;
     text-align: center;
+}
+
+.nav-logo img {
+    height: 90%;
 }
 
 .nav-name {
@@ -29,7 +33,7 @@ nav {
 
 @keyframes nav-name-animatie-in {
     0% {
-        opacity: 0%;
+        opacity: 0;
     } 30% {
         opacity: 0;
     } 100% {
