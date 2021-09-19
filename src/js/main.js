@@ -45,3 +45,13 @@ function nav_menu_animatie() {
         nav_links_count -= 1;
     }
 }
+
+function nav_logo_img_change_in() {
+    const nav_logo_img = document.getElementById("nav-logo-img");
+    nav_logo_img.src = './img/logo-hover.png';
+}
+
+function nav_logo_img_change_out() {
+    const nav_logo_img = document.getElementById("nav-logo-img");
+    nav_logo_img.src = './img/logo.png';
+}

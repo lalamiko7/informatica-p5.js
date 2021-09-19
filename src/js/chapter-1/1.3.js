@@ -2,7 +2,7 @@ var u = 20;
 
 function setup() {
     createCanvas(600, 600);
-    background(100);
+    background('lightgrey');
 }
 
 function draw() {
