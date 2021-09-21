@@ -48,10 +48,10 @@ function nav_menu_animatie() {
 
 function nav_logo_img_change_in() {
     const nav_logo_img = document.getElementById("nav-logo-img");
-    nav_logo_img.src = './img/logo-hover.png';
+    nav_logo_img.src = 'img/logo-hover.png';
 }
 
 function nav_logo_img_change_out() {
     const nav_logo_img = document.getElementById("nav-logo-img");
-    nav_logo_img.src = './img/logo.png';
+    nav_logo_img.src = 'img/logo.png';
 }
