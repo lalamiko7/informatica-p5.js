@@ -1,7 +1,11 @@
 var x;
 var y;
-var eyeXL;
-var eyeXR;
+var eyeXLH;
+var eyeXRH;
+var eyeXLN;
+var eyeXRN;
+var eyeXLS;
+var eyeXRS;
 var eyeY;
 
 function setup() {
@@ -10,21 +14,49 @@ function setup() {
 
     x = width / 2;
     y = height / 2;
-
-    eyeXL = x - 30;
-    eyeXR = x + 30;
+    
+    eyeXLH = x - 270;
+    eyeXRH = x - 330;
+    eyeXLN = x - 30;
+    eyeXRN = x + 30;
+    eyeXLS = x + 270;
+    eyeXRS = x + 330;
+    
     eyeY = y - 30;
 }
 
 function draw() {
-    // Boos
+    eyeY = map(mouseY, 0, height, y - 38, y  - 22);
+    
+    eyeXLH = map(mouseX + 300, 0, width, x - 278, x - 262);
+    eyeXRH = map(mouseX + 300, 0, width, x - 338, x - 322);
+    
+    eyeXLN = map(mouseX, 0, width, x - 38, x - 22);
+    eyeXRN = map(mouseX, 0, width, x + 22, x + 38);
+    
+    eyeXLS = map(mouseX - 300, 0, width, x + 262, x + 278);
+    eyeXRS = map(mouseX - 300, 0, width, x + 322, x + 338);
+    
+    // Happy
     fill(255);
     ellipse(x - 300, y, 200, 200);
 
-    fill('white');
-    ellipse(x - 330, y - 30, 40, 40);
-    ellipse(x - 270, y - 30, 40, 40);
+    // ogen
+    fill(0);
+    ellipse(x - 330, y - 30, 30, 30);
+    ellipse(x - 270, y - 30, 30, 30);
 
+    // pupil
+    fill(255);
+    noStroke();
+
+    circle(eyeXLH, eyeY, 10);
+    circle(eyeXRH, eyeY, 10);
+
+    stroke(0);
+    fill(0);
+    
+    // mond
     fill(255)
     strokeWeight(10);
     var startAng = .1 * PI;
@@ -32,7 +64,7 @@ function draw() {
     var smileDiam = .6 * 200;
     arc(x - 300, y, smileDiam, smileDiam, startAng, endAng);
 
-    // Normaal
+    // Normal
     fill(255);
     ellipse(x, y, 200, 200);
 
@@ -45,12 +77,8 @@ function draw() {
     fill(255);
     noStroke();
 
-    circle(eyeXL, eyeY, 10);
-    circle(eyeXR, eyeY, 10);
-
-    eyeY = map(mouseY, 0, height, y - 38, y  - 22);
-    eyeXL = map(mouseX, 0, width, x - 38, x  - 22);
-    eyeXR = map(mouseX, 0, width, x + 22, x  + 38);
+    circle(eyeXLN, eyeY, 10);
+    circle(eyeXRN, eyeY, 10);
 
     stroke(0);
     fill(0);
@@ -58,14 +86,26 @@ function draw() {
     // mond
     line(x - 50, y + 30, x + 50, y + 30);
 
-    // Blij
+    // Sad
     fill(255);
     ellipse(x + 300, y, 200, 200);
-
+    
+    // ogen
     fill(0);
     ellipse(x + 270, y - 30, 30, 30);
     ellipse(x + 330, y - 30, 30, 30);
+    
+    // pupil
+    fill(255);
+    noStroke();
 
+    circle(eyeXLS, eyeY, 10);
+    circle(eyeXRS, eyeY, 10);
+
+    stroke(0);
+    fill(0);
+    
+    // mond
     fill(255)
     strokeWeight(10);
     var startAng = 0 - .9 * PI;
