@@ -178,17 +178,23 @@ nav {
 }
 
 .nav-links {
-    opacity: 0%;
-    margin-left: 100%;
-    position: absolute;
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
     text-align: right;
-    width: 60%;
     /* border: 1px solid black; */
 }
 
 .nav-links a {
     text-decoration: none;
     color: #F0F7F8;
+    transition: 0.3s;
 }
 
 .nav-links a:hover {

@@ -33,15 +33,18 @@ function nav_menu_animatie() {
 
     const nav_links = document.getElementById("nav-links");
     if (nav_links_count == 0) {
-        nav_links.classList.toggle("nav-links-animatie-in");
+        //nav_links.classList.toggle("nav-links-animatie-in");
+        nav_links.style.width = "100%";
         nav_links_count += 1;
     } else if (nav_links_count == 1) {
-        nav_links.classList.toggle("nav-links-animatie-in");
-        nav_links.classList.toggle("nav-links-animatie-out");
+        //nav_links.classList.toggle("nav-links-animatie-in");
+        nav_links.style.width = "0";
+        //nav_links.classList.toggle("nav-links-animatie-out");
         nav_links_count += 1;
     } else if (nav_links_count == 2) {
-        nav_links.classList.toggle("nav-links-animatie-out");
-        nav_links.classList.toggle("nav-links-animatie-in");
+        nav_links.style.width = "100%";
+        //nav_links.classList.toggle("nav-links-animatie-out");
+        //nav_links.classList.toggle("nav-links-animatie-in");
         nav_links_count -= 1;
     }
 }
