@@ -38,10 +38,12 @@ function draw() {
     eyeXRS = map(mouseX - 300, 0, width, x + 322, x + 338);
     
     // Happy
-    fill(255);
+    fill('#ffcc00');
+    stroke('#e6b800');
     ellipse(x - 300, y, 200, 200);
 
     // ogen
+    stroke('#cca300');
     fill(0);
     ellipse(x - 330, y - 30, 30, 30);
     ellipse(x - 270, y - 30, 30, 30);
@@ -57,7 +59,8 @@ function draw() {
     fill(0);
     
     // mond
-    fill(255)
+    fill('#ffcc00');
+    stroke('#cca300');
     strokeWeight(10);
     var startAng = .1 * PI;
     var endAng = .9 * PI;
@@ -65,10 +68,12 @@ function draw() {
     arc(x - 300, y, smileDiam, smileDiam, startAng, endAng);
 
     // Normal
-    fill(255);
+    stroke('#cc0000');
+    fill('#e60000');
     ellipse(x, y, 200, 200);
 
     // ogen
+    stroke('#b30000');
     fill(0);
     ellipse(x - 30, y - 30, 30, 30);
     ellipse(x + 30, y - 30, 30, 30);
@@ -80,17 +85,19 @@ function draw() {
     circle(eyeXLN, eyeY, 10);
     circle(eyeXRN, eyeY, 10);
 
-    stroke(0);
+    stroke('#b30000');
     fill(0);
 
     // mond
     line(x - 50, y + 30, x + 50, y + 30);
 
     // Sad
-    fill(255);
+    stroke('#0066cc');
+    fill('#0073e6');
     ellipse(x + 300, y, 200, 200);
     
     // ogen
+    stroke('#0059b3');
     fill(0);
     ellipse(x + 270, y - 30, 30, 30);
     ellipse(x + 330, y - 30, 30, 30);
@@ -102,11 +109,11 @@ function draw() {
     circle(eyeXLS, eyeY, 10);
     circle(eyeXRS, eyeY, 10);
 
-    stroke(0);
+    stroke('#0059b3');
     fill(0);
     
     // mond
-    fill(255)
+    fill('#0073e6');
     strokeWeight(10);
     var startAng = 0 - .9 * PI;
     var endAng = 0 - .1 * PI;
