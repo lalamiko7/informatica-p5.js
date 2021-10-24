@@ -33,18 +33,19 @@ function nav_menu_animatie() {
 
     const nav_links = document.getElementById("nav-links");
     if (nav_links_count == 0) {
-        //nav_links.classList.toggle("nav-links-animatie-in");
-        nav_links.style.width = "100%";
+        nav_links.style.top = "1.3vw";
+        nav_links.style.fontSize = "2.2vw";
+        nav_links.style.right = "15vw";
         nav_links_count += 1;
     } else if (nav_links_count == 1) {
-        //nav_links.classList.toggle("nav-links-animatie-in");
-        nav_links.style.width = "0";
-        //nav_links.classList.toggle("nav-links-animatie-out");
+        nav_links.style.fontSize = "0";
+        nav_links.style.top = "2.7vw";
+        nav_links.style.right = "12vw";
         nav_links_count += 1;
     } else if (nav_links_count == 2) {
-        nav_links.style.width = "100%";
-        //nav_links.classList.toggle("nav-links-animatie-out");
-        //nav_links.classList.toggle("nav-links-animatie-in");
+        nav_links.style.top = "1.3vw";
+        nav_links.style.fontSize = "2.2vw";
+        nav_links.style.right = "15vw";
         nav_links_count -= 1;
     }
 }
