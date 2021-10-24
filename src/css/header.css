@@ -54,6 +54,15 @@ nav {
     /* border: 1px solid black; */
 }
 
+.nav-name a {
+    text-decoration: none;
+    color: #F0F7F8;
+}
+
+.nav-name a:hover {
+    color: #B3CDE0;
+}
+
 .nav-name-animatie-in {
     animation: nav-name-animatie-in ease 1.5s forwards;
 }

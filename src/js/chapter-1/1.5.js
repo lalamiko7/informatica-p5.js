@@ -29,8 +29,19 @@ function draw() {
 
     fill('#5d8d9f');
     circle(0, 0 + 100, 200);
-    circle(0, 0 - 100, 50);
+    //circle(0, 0 - 100, 50);
+    beginShape();
+    vertex(0, - 50);
+    bezierVertex(100, -150, 0, -150, 0, -100);
+    bezierVertex(0, -150, -100, -150, 0, -50);
+    endShape();
+
     
     fill('#ffa3b9');
-    circle(0, 0 + 100, 50);
+    //circle(0, 0 + 100, 50);
+    beginShape();
+    vertex(0, + 50);
+    bezierVertex(100, 150, 0, 150, 0, 100);
+    bezierVertex(0, 150, -100, 150, 0, 50);
+    endShape();
 }

@@ -28,9 +28,11 @@ function draw() {
     // Type 2: pac-man
     stroke('#e3d339');
     strokeWeight(5);
+    var colorX = map(mouseX, 0, 1425, 1, 100);
+    var colorY = map(mouseY, 0, 770, 1, 2);
     x = 400;
     y = 500;
-    fill('#fcea3f');
+    fill(2.52 * colorX, 2.34 * (colorX/2) * colorY, 0.63 * colorX);
     arc(x, y-((size/1.2)/2), size/1.2, size/1.2, 0, TWO_PI - QUARTER_PI, PIE);
 
     // Type 3: pride flag
@@ -97,9 +99,20 @@ function draw() {
     fill('#fbd043');
     circle(x, y - ((size/1.2)/2), size/1.2);
     noStroke();
+
     fill(0);
     circle(x - size/(200/30), (y - ((size/1.2)/2)) - size/(200/30), size/(200/30));
     circle(x + size/(200/30), (y - ((size/1.2)/2)) - size/(200/30), size/(200/30));
+
+    var eyeY = map(mouseY, 0, 770, (y - ((size/1.2)/2)) - size/(200/30) - 5, (y - ((size/1.2)/2)) - size/(200/30) + 5);
+    
+    var eyeXL = map(mouseX, 0, 1425, x - size/(200/30) - 5, x - size/(200/30) + 5);
+    var eyeXR = map(mouseX, 0, 1425, x + size/(200/30) - 5, x + size/(200/30) + 5);
+
+    fill(255);
+    circle(eyeXL, eyeY, 10);
+    circle(eyeXR, eyeY, 10);
+
     stroke(0);
     fill('#fbd043');
     strokeWeight(size/(200/10));

@@ -30,13 +30,20 @@ function setup() {
     xr = 0;
 }
 
+function mouseClicked() {
+    yr = 0;
+    y = - album_size / 2;
+}
+
 function draw() {
+
     // Maak nulpunt het midden
     translate(width / 2, height / 2);
     
     // Loop met random vakjes
     noStroke();
     if (yr < 15) {
+
         for (xr = 0; xr < 15; xr++) {
             fill(random(50), random(50), random(150));
             rect(x, y, size, size);
@@ -47,8 +54,6 @@ function draw() {
         yr++;
         xr++
     }
-
-    //rect(random(- album_size / 2, (album_size / 2) - 20), random(- album_size / 2, (album_size / 2) - 20), 20, 20)
     
     // parental advisory box
     noStroke();
