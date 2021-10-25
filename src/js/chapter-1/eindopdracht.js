@@ -43,16 +43,16 @@ function draw() {
     // Loop met random vakjes
     noStroke();
     if (yr < 15) {
-
-        for (xr = 0; xr < 15; xr++) {
-            fill(random(50), random(50), random(150));
-            rect(x, y, size, size);
-            x += size;
+        for(yr = 0; yr < 15; yr++) {
+            for (xr = 0; xr < 15; xr++) {
+                fill(random(50), random(50), random(150));
+                rect(x, y, size, size);
+                x += size;
+            }
+            x = - album_size / 2;
+            y += size;
+            xr++
         }
-        x = - album_size / 2;
-        y += size;
-        yr++;
-        xr++
     }
     
     // parental advisory box
