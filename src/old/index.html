@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Processing met JavaScript</title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">
+
+        <script src="js/p5.js"></script>
+        <script src="https://kit.fontawesome.com/3e99f49328.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-logo">
+                <a class="nav-logo-link" href="#">
+                    <img id="nav-logo-img" src="../new/img/logo.png">
+                </a>
+            </div>
+            <div id="nav-name" class="nav-name">Welkom op de site van Ashamedweaver6 & Madruffs8!</div>
+            <div id="nav-links" class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a class="fake">Hoofdstuk 1:</a>
+                <a href="pages/chapter-1/les-1/1.0.html">Les-1</a>
+                <a href="pages/chapter-1/les-2/2.0.html">Les-2</a>
+                <a href="pages/chapter-1/les-3/3.0.html">Les-3</a>
+                <a href="pages/chapter-1/final-project.html">Eindopdracht</a>
+                <a class="fake">Hoofdstuk 2:</a>
+                <a href="pages/chapter-2/les-1/1.0.html">Les-1</a>
+                <a href="pages/chapter-2/les-2/2.0.html">Les-2</a>
+                <a class="fake">Overig:</a>
+                <a href="pages/test.html">Testing</a>
+            </div>
+            <div class="nav-menu">
+                <div id="nav-menu-symbool" class="nav-menu-symbool" onclick="nav_menu_animatie()">
+                    <div class="streepje-1"></div>
+                    <div class="streepje-2"></div>
+                    <div class="streepje-3"></div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="wrapper">
+            <h1>Onze twee meest recente opdrachten:</h1>
+        </div>
+        
+        <footer>
+            <div class="footer-wrapper">
+                <div class="footer-menu">
+                    <h1 class="footer-menu-title">Navigatie</h1>
+                    <ul class="footer-menu-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <br>
+                        <li><a class="fake">Hoofdstuk 1:</a></li>
+                        <a href="pages/chapter-1/les-1/1.0.html">Les-1</a>
+                        <a href="pages/chapter-1/les-2/2.0.html">Les-2</a>
+                        <a href="pages/chapter-1/les-3/3.0.html">Les-3</a>
+                        <a href="pages/chapter-1/final-project.html">Eindopdracht</a>
+                        <br>
+                        <li><a class="fake">Overig:</a></li>
+                        <a href="pages/test.html">Testing</a>
+                    </ul>
+                </div>
+                <div class="line"></div>
+                <div class="footer-contact">
+                    <h1 class="footer-contact-title">Contact</h1>
+                    <div class="footer-contact-links">
+                        <p>Email</p>
+                        <a href="mailto:AshamedWeaver6.madruffs8@gmail.com"><i class="far fa-envelope"></i></a>
+                        <p class="subtitle">Sociale media</p>
+                        <a href="https://www.facebook.com/profile.php?id=100072901159378"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/mad_weaver"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/ashamedweaver6madruffs8?utm_medium=copy_link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="footer-news">
+                    <h1 class="footer-news-title">Aanmelden nieuwsbrief</h1>
+                    <form>
+                        <input type="name" placeholder="Naam" name="name" required>
+                        <input type="email" placeholder="Email address" name="mail" required>
+                        <div>
+                            <input type="checkbox" checked="checked" name="subscribe"> Wekelijkse brief
+                            <input type="checkbox" checked="checked" name="subscribe"> Maandelijks brief
+                        </div>
+                
+                        <input type="submit" value="Subscribe">
+                      </form>
+                </div>
+            </div>
+            <div class="copyright">&copy; 2021 - ashamedweaver 6madruffs8</div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

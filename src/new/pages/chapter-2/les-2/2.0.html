@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Processing met JavaScript</title>
+
+        <script>
+            // mobile / dekstop linking css files
+        </script>
+
+        <link rel="stylesheet" href="../../../css/style.css">
+        <link rel="stylesheet" href="../../../css/header.css">
+        <link rel="stylesheet" href="../../../css/footer.css">
+
+        <script src="../../../js/p5.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-logo">
+                <a class="nav-logo-link" href="#">
+                    <svg class="nav-logo-svg">
+                        <circle class="nav-logo-svg-circle" cx="50%" cy="50%" r="49%"
+                         onmouseenter="nav_logo_img_change_in()" 
+                         onmouseout="nav_logo_img_change_out()"/>
+                    </svg>
+                    <img id="nav-logo-img" src="../../../img/logo.png">
+                </a>
+            </div>
+            <div id="nav-name" class="nav-name">Hoofdstuk 2 - Les 2</div>
+            <div id="nav-links" class="nav-links">
+                <a href="../../../index.php">Home</a>
+                <a class="fake">Hoofdstuk 1:</a>
+                <a class="active" href="../..1/les-1/1.0.html">Les-1</a>
+                <a href="../..1/les-2/2.0.html">Les-2</a>
+                <a href="../..1/les-3/3.0.html">Les-3</a>
+                <a href="../..1/final-project.html">Eindopdracht</a>
+                <a class="fake">Overig:</a>
+                <a href="../..l">Testing</a>
+            </div>
+            <div class="nav-menu">
+                <div id="nav-menu-symbool" class="nav-menu-symbool" onclick="nav_menu_animatie()">
+                    <div class="streepje-1"></div>
+                    <div class="streepje-2"></div>
+                    <div class="streepje-3"></div>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="wrapper">
+            <a href="2.1.html">Les 2.1</a>
+            <a href="2.2.html">les 2.2</a>
+            <a href="2.3.html">Eindopdracht</a>
+        </div>
+        
+        <footer>
+            <p>Onze footer</p>
+        </footer>
+
+        <script src="../../../js/main.js"></script>
+    </body>
+</html>
