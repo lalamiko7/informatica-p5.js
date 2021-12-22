@@ -65,13 +65,13 @@ function generateCode(length, duplicate) {
 // Function for checking if the mouse is hovering a lightSwitch yes or no
 // Arguments mouseX and mouseY, reads from buttons array
 function checkButton(mouseX, mouseY) {
-
+    // Code
 }
 
 // Function activates if the mouse is pressed
 function mousePressed() {
     if (checkButton(mouseX, mouseY)) {
-
+        // Code
     }
 }
 
