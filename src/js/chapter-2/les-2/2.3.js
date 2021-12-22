@@ -13,12 +13,17 @@ let code; // Code generated with numbers
 
 let buttons; // List of clickable buttons
 
+let i; // General variable for loops and other recursive elements
+let j; // Other general variable
+
+let pressed; // Variable for id of pressed button
+
 let test = 0; // Testing variable
 
 // Function for creating light switches
 // Arguments x, y for the coordinates and id for text in the switch
 function createLightSwitch(x, y, id) {
-    buttons.push([id, x, y, size]); // Push id and coordinates with size to buttons list
+    buttons.push([id, x, y, size]); // Push id and coordinates with size to the buttons list
 
     strokeWeight(5); // Set stroke thickness to 5
     stroke(102, 153, 255); // Set stroke color
@@ -26,11 +31,11 @@ function createLightSwitch(x, y, id) {
     rect(x, y, size, size); // Create rectangle on (x,y) with size
     noStroke(); // Remove the stroke
     fill(102, 153, 255); // Set fill color
-    if (id === '*') {
-        textSize(50); // Large text size for small *
+    if (id === '*') { // Check if the id is a star
+        textSize(50); // Large text size for the small * <- star
         text(id, x + 0.5 * size, y + 1.2 * size); // Create text, in the middle of the rectangle
-    } else {
-        textSize(32); // Small text for larger icons
+    } else { // Check if the id is something other than a star
+        textSize(32); // Small text size for the already larger icons
         text(id, x + 0.5 * size, y + 0.8 * size); // Create text, in the middle of the rectangle
     }
 }
@@ -63,19 +68,26 @@ function generateCode(length, duplicate) {
 }
 
 // Function for checking if the mouse is hovering a lightSwitch yes or no
-// Arguments mouseX and mouseY, reads from buttons array
+// Arguments mouseX and mouseY, reads from the already defined buttons array
 function checkButton(mouseX, mouseY) {
-    // Code
-}
-
-// Function activates if the mouse is pressed
-function mousePressed() {
-    if (checkButton(mouseX, mouseY)) {
-        // Code
+    for (i = 0; i in buttons; i++) { // Repeats code for all elements in buttons
+        if (mouseX >= buttons[i][1] && mouseX <= buttons[i][1] + buttons[i][3] // Check if the mouseX is in the button box
+            && mouseY >= buttons[i][2] && mouseY <= buttons[i][2] + buttons[i][3]) { // Check if the mouseY is in the button box
+            return 'Pressed the ' + buttons[i][0] + ' button'; // Return the id of the button box
+        }
     }
+    return 'Did not press a button'; // Return that user did not press any button
 }
 
-// Run this function one time
+// This function activates if the mouse is pressed
+function mousePressed() {
+    pressed = checkButton(mouseX, mouseY); // Check if a button is pressed and store that result
+    console.log(pressed); // Console log the result
+
+    
+}
+
+// This function runs one time and sets up the canvas and its background
 function setup() {
     createCanvas(1425, 770); // Create new canvas
     background('lightgrey'); // Choose background color for said canvas
