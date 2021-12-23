@@ -14,9 +14,14 @@ let code; // Code generated with numbers
 let buttons; // List of clickable buttons
 
 let i; // General variable for loops and other recursive elements
-let j; // Other general variable
 
 let pressed; // Variable for id of pressed button
+let current; // The id of the current code place
+
+let output; // The output text for the lock
+
+let windowWidth; // Variable for the width of the window
+let windowHeight; // Variable for the height of the window
 
 let test = 0; // Testing variable
 
@@ -43,10 +48,12 @@ function createLightSwitch(x, y, id) {
 // Function for generating new random codes
 // Arguments for length and if you want duplicates or not
 function generateCode(length, duplicate) {
+    current = 0; // Set the current yet to solve id of the code to zero
     code = []; // Create new empty list
     if (duplicate === true) { // If user wants duplicates
         for (let i = 0; i < length; i++) { // Repeat until code is correct length
             number = int(random(0, 10)); // Generate a random number between 0, and 10
+            number = number.toString(); // Convert int to string
             code.push(number); // Add to the list
         }
         return code; // Return the code
@@ -57,8 +64,10 @@ function generateCode(length, duplicate) {
         } else { // If asked length is less 10 or less
             for (let i = 0; i < length; i++) { // Repeat until code is correct length
                 number = int(random(0, 10)); // Generate new random number
+                number = number.toString(); // Convert int to string
                 while (code.includes(number)) { // If number is a duplicate repeat until it's not
                     number = int(random(0, 10)); // Generate new random number
+                    number = number.toString(); // Convert int to string
                 }
                 code.push(number); // Add number to code
             }
@@ -73,33 +82,67 @@ function checkButton(mouseX, mouseY) {
     for (i = 0; i in buttons; i++) { // Repeats code for all elements in buttons
         if (mouseX >= buttons[i][1] && mouseX <= buttons[i][1] + buttons[i][3] // Check if the mouseX is in the button box
             && mouseY >= buttons[i][2] && mouseY <= buttons[i][2] + buttons[i][3]) { // Check if the mouseY is in the button box
-            return 'Pressed the ' + buttons[i][0] + ' button'; // Return the id of the button box
+            console.log('Pressed the ' + buttons[i][0] + ' button'); // Console log which button is pressed
+            return buttons[i][0]; // Return the id of the button box
         }
     }
-    return 'Did not press a button'; // Return that user did not press any button
+    console.log('Did not press a button'); // Console log that no button is pressed
+    return null; // Return that user did not press any button
 }
 
 // This function activates if the mouse is pressed
 function mousePressed() {
-    pressed = checkButton(mouseX, mouseY); // Check if a button is pressed and store that result
-    console.log(pressed); // Console log the result
+    if (current >= 3) { // If all the numbers are already cracked
+        output = 'already solved!'; // Set the output value to 'already done!'
+        console.log('already done!'); // Write output in the console because the code is cracked
+        return true; // Stop the function and return true
+    }
 
-    
+    pressed = checkButton(mouseX, mouseY); // Check if a button is pressed and store that result
+    if (pressed === null) { // If the result is that no button is pressed
+        output = 'nop'; // Set the output to 'nop'
+        console.log(output); // Write output in the console
+        return false; // Stop the function and return false
+    } else if (pressed === code[current]) { // Check if the result is the current yet to solve number
+        current++; // Update the current yet to solve number
+        if (current >= 3) { // If all the numbers have been cracked
+            output = 'done'; // Set the output to 'done'
+            console.log(output); // Write output in the console because the code is cracked
+        } else { // If there are still numbers in the code to be cracked
+            output = 'yes'; // Set the output to 'yes'
+            console.log(output); // Write output in the console
+        }
+        return true; // Stop the function and return true
+    } else if (code.includes(pressed)) { // Check if te number is in the code
+        output = 'almost'; // Set the output to 'almost'
+        console.log(output); // Write output in the console
+        return false; // Stop the function and return false
+    } else { // If the pressed number is not the current yet to solve number and is not in the code
+        output = 'nah'; // Set the output to 'nah'
+        console.log(output); // Write nah in the console
+        return false; // Stop the function and return false
+    }
 }
 
 // This function runs one time and sets up the canvas and its background
 function setup() {
-    createCanvas(1425, 770); // Create new canvas
+    // Following two lines for the responsive web design
+    windowWidth = window.innerWidth; // Set the width of the window
+    windowHeight = window.innerHeight; // Set the height of the window
+
+    createCanvas(windowWidth, windowHeight); // Create new canvas
     background('lightgrey'); // Choose background color for said canvas
 
     size = 40; // Define size of the game elements
     spacing = 40; // Define the space between the elements
 
+    output = 'click a button'; // Set the standard for the output value
+
     textSize(32); // Standard text size
     textAlign(CENTER); // Align text to center
 
     code = generateCode(3, false); // Run the generateCode function with said arguments
-    console.log(code); // Write the code to the console
+    console.log('Code: %o', code); // Write the code to the console
 
     buttons = []; // Define new empty list for light switches
 
@@ -153,14 +196,7 @@ function setup() {
     x += size + spacing; // X position for light switch
     createLightSwitch(x, y, '#') // Create the light on (x,y) with given id
 
-    fill(77, 77, 77); // Set fill color
-
-    noStroke(); // Remove stroke
-    x = width/2 - 0.5 * breedte - 4; // X position for the text box under the light switches
-    y = height/2 + 0.5 * hoogte + 1.5 * spacing; // Y position for the text box under the light switches
-    rect(x, y, breedte + 8, 40); // Create the box for the text
-
-    console.log(buttons); // Console log the array of the buttons
+    console.log('buttons: %o', buttons); // Console log the array of the buttons
 }
 
 // This function repeats indefinitely
@@ -178,4 +214,15 @@ function draw() {
     ellipse(x, y - size, size - 15, size - 15); // Create the second light
     x = width/2 + 0.3 * breedte; // X position for the light
     ellipse(x, y - size, size - 15, size - 15); // Create the third light
+
+    fill(77, 77, 77); // Set fill color
+
+    noStroke(); // Remove stroke
+    x = width/2 - 0.5 * breedte - 4; // X position for the text box under the light switches
+    y = height/2 + 0.5 * hoogte + 1.5 * spacing; // Y position for the text box under the light switches
+    rect(x, y, breedte + 8, 40); // Create the box for the text
+
+    textSize(32); // Small text size
+    fill('red'); // Set the fill color to red
+    text(output, x + 2.5 * size, y + 0.8 * size); // Create text
 }
