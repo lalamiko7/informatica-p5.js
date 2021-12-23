@@ -23,6 +23,11 @@ let output; // The output text for the lock
 let windowWidth; // Variable for the width of the window
 let windowHeight; // Variable for the height of the window
 
+let yellowArray; // Variable for RGB values default lamp color
+let color1Array; // Variable for lamp color
+let color2Array; // Variable for lamp color
+let color3Array; // Variable for lamp color
+
 let test = 0; // Testing variable
 
 // Function for creating light switches
@@ -120,6 +125,7 @@ function mousePressed() {
     } else { // If the pressed number is not the current yet to solve number and is not in the code
         output = 'nah'; // Set the output to 'nah'
         console.log(output); // Write nah in the console
+        color1Array = [128, 0, 0]; // Make lamp one red
         return false; // Stop the function and return false
     }
 }
@@ -136,6 +142,7 @@ function setup() {
     size = 40; // Define size of the game elements
     spacing = 40; // Define the space between the elements
 
+    yellowArray = [255, 255, 128]; // Set the value for the default lamp color
     output = 'click a button'; // Set the standard for the output value
 
     textSize(32); // Standard text size
@@ -143,6 +150,10 @@ function setup() {
 
     code = generateCode(3, false); // Run the generateCode function with said arguments
     console.log('Code: %o', code); // Write the code to the console
+
+    color1Array = yellowArray; // Make lamp color yellow
+    color2Array = yellowArray; // Make lamp color yellow
+    color3Array = yellowArray; // Make lamp color yellow
 
     buttons = []; // Define new empty list for light switches
 
@@ -202,16 +213,21 @@ function setup() {
 // This function repeats indefinitely
 function draw() {
     strokeWeight(3); // Set stroke thickness to 3
-    stroke(255, 230, 100); // Set stroke color
-    fill(255, 255, 128); // Set fill color
     breedte = 3 * size + 2 * spacing; // Define value for the width of the imaginary box around the lights
 
-    x = width/2; // X position for the light
+    fill(color1Array[0], color1Array[1], color1Array[2]); // Set fill color
+    stroke(color1Array[0] * 0.5, color1Array[1] * 0.5, color1Array[2] * 0.5); // Set stroke color
+    x = width/2 - 0.3 * breedte; // X position for the light
     y = height/2 - 0.5 * breedte; // Y position for the light
     ellipse(x, y - size, size - 15, size - 15); // Create the first light
 
-    x = width/2 - 0.3 * breedte; // X position for the light
+    fill(color2Array[0], color2Array[1], color2Array[2]); // Set fill color
+    stroke(color2Array[0] * 1/2, color2Array[1] * 1/2, color2Array[2] * 1/2); // Set stroke color
+    x = width/2; // X position for the light
     ellipse(x, y - size, size - 15, size - 15); // Create the second light
+
+    fill(color2Array[0], color2Array[1], color2Array[2]); // Set fill color
+    stroke(color2Array[0] * 1/2, color2Array[1] * 1/2, color2Array[2] * 1/2); // Set stroke color
     x = width/2 + 0.3 * breedte; // X position for the light
     ellipse(x, y - size, size - 15, size - 15); // Create the third light
 
