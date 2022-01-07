@@ -193,10 +193,10 @@ nav {
     height: 100px;
     width: 53%;
     position: absolute;
+    align-items: center;
+    display: flex;
 }
 .nav-links {
-    height: 50%;
-    top: 25%;
     width: 100%;
     position: absolute;
     right: -100%;
