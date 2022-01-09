@@ -20,17 +20,20 @@ const opdracht_1 = function (p5) {
 
     p5.draw = function () {
         p5.background('lightgrey');
-        let d = p5.dist(p5.mouseX, p5.mouseY, x, y);
-        if (d < diameter/2) {
-            p5.fill('#6497B1');
-        } else {
-            p5.fill('#B3CDE0');
+
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            let d = p5.dist(p5.mouseX, p5.mouseY, x, y);
+            if (d < diameter/2) {
+                p5.fill('#6497B1');
+            } else {
+                p5.fill('#B3CDE0');
+            }
+
+            x = p5.mouseX;
+            y = p5.mouseY;
+
+            p5.ellipse(x, y, diameter, diameter);
         }
-
-        x = p5.mouseX;
-        y = p5.mouseY;
-
-        p5.ellipse(x, y, diameter, diameter);
     }
 }
 
@@ -72,9 +75,6 @@ const opdracht_2 =  function (p5) {
         }
         d = p5.dist(p5.mouseX, p5.mouseY, x, y);
 
-
-        p5.ellipse(x, y, radius, radius);
-
         if (p5.mouseIsPressed){
             if (d < radius) {
                 if (start === true) {
@@ -86,6 +86,9 @@ const opdracht_2 =  function (p5) {
             }
         }
 
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            p5.ellipse(x, y, radius, radius);
+        }
     }
 }
 
@@ -120,6 +123,8 @@ const opdracht_3 = function (p5) {
     let color3Array; // Variable for lamp 3 color
 
     let inputArray; // Variable for the user inputs
+    let inputReady; // Variable for boolean to check user inputs
+    let realInputArray;
 
     let yellowArray; // Variable for RGB values default lamp color
     let redArray; // Value for the red lamp color
@@ -195,42 +200,65 @@ const opdracht_3 = function (p5) {
 
 // This function activates if the mouse is pressed
     p5.mousePressed = function () {
-        if (current >= 3) { // If all the numbers are already cracked
-            output = 'Already solved!'; // Set the output value to 'already done!'
-            console.log(output); // Write output in the console because the code is cracked
-            return true; // Stop the function and return true
+        if (!(p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height)) {
+            return false;
         }
 
         pressed = checkButton(p5.mouseX, p5.mouseY); // Check if a button is pressed and store that result
+        if (pressed === '#') {
+            if (inputArray.length < 3) {
+                console.log('Je moet wel drie getallen invoeren');
+                output = 'Not ready';
+                return false;
+            } else {
+                inputReady = true;
+                return false;
+            }
+        } else if (pressed === '*') {
+            if (inputArray.length <= 0) {
+                console.log("Vul eerst een getal in");
+                output = 'Not possible';
+                return false;
+            } else {
+                current--;
+                inputArray.pop();
+                realInputArray.pop();
+                return false;
+            }
+        }
+
+        if (current >= 3) { // If all the numbers are already cracked
+            console.log("Al gehaald of al drie nummers ingetypt"); // Write output in the console because the code is cracked
+            return true; // Stop the function and return true
+        }
+
         if (pressed === null) { // If the result is that no button is pressed
-            output = 'Nop'; // Set the output to 'nop'
             console.log(output); // Write output in the console
             return false; // Stop the function and return false
         } else if (pressed === code[current]) { // Check if the result is the current yet to solve number
             current++; // Update the current yet to solve number
             if (current >= 3) { // If all the numbers have been cracked
-                output = 'Done'; // Set the output to 'done'
                 console.log(output); // Write output in the console because the code is cracked
             } else { // If there are still numbers in the code to be cracked
-                output = 'Yes'; // Set the output to 'yes'
                 console.log(output); // Write output in the console
             }
             inputArray.push(2); // Save in the array that the user pressed a correct switch
             console.log(inputArray);
+            realInputArray.push(pressed);
             return true; // Stop the function and return true
         } else if (code.includes(pressed)) { // Check if te number is in the code
             current++; // Update the current yet to solve number
-            output = 'Almost'; // Set the output to 'almost'
             console.log(output); // Write output in the console
             inputArray.push(1); // Save in the array that the user pressed a semi correct switch
             console.log(inputArray);
+            realInputArray.push(pressed);
             return false; // Stop the function and return false
         } else { // If the pressed number is not the current yet to solve number and is not in the code
             current++; // Update the current yet to solve number
-            output = 'Nah'; // Set the output to 'nah'
             console.log(output); // Write nah in the console
             inputArray.push(0); // Save in the array that the user pressed a wrong switch
             console.log(inputArray);
+            realInputArray.push(pressed);
             return false; // Stop the function and return false
         }
     }
@@ -255,6 +283,8 @@ const opdracht_3 = function (p5) {
         one = 0;
         zero = 0;
 
+        realInputArray = [];
+
         output = 'click a button'; // Set the standard for the output value
 
         p5.textSize(32); // Standard text size
@@ -273,6 +303,7 @@ const opdracht_3 = function (p5) {
 
         current = 0; // Set the current yet to solve id of the code to zero
         inputArray = []; // Define new empty list for user inputs
+        inputReady = false;
 
         p5.fill(115, 115, 115); // Set the fill color
         p5.stroke('darkgrey'); // Set the stroke color
@@ -333,7 +364,7 @@ const opdracht_3 = function (p5) {
         breedte = 3 * size + 2 * spacing; // Define value for the width of the imaginary box around the lights
 
         // If user pressed three switches
-        if (inputArray.length >= 3) {
+        if (inputReady === true) {
             //console.log('klaar bitches');
             inputArray.forEach(function (item) {
                 switch (item) {
@@ -368,6 +399,15 @@ const opdracht_3 = function (p5) {
             two = 0;
             inputArray = [];
             current = 0;
+            inputReady = false;
+            realInputArray = [];
+        }
+
+        output = realInputArray;
+
+        if (colorsArray[2] === redArray) {
+            current = 69;
+            output = "Gehaald";
         }
 
         color1Array = colorsArray[0];
@@ -398,7 +438,7 @@ const opdracht_3 = function (p5) {
         p5.rect(x, y, breedte + 8, 40); // Create the box for the text
 
         p5.textSize(32); // Small text size
-        p5.fill('white'); // Set the fill color to red
+        p5.fill(whiteArray[0], whiteArray[1], whiteArray[2]); // Set the fill color to red
         p5.text(output, x + 2.5 * size, y + 0.8 * size); // Create text
     }
 
