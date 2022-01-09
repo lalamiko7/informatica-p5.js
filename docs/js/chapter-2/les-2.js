@@ -201,7 +201,7 @@ const opdracht_3 = function (p5) {
 // This function activates if the mouse is pressed
     p5.mousePressed = function () {
         if (!(p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height)) {
-            return false;
+            return;
         }
 
         pressed = checkButton(p5.mouseX, p5.mouseY); // Check if a button is pressed and store that result
@@ -209,32 +209,32 @@ const opdracht_3 = function (p5) {
             if (inputArray.length < 3) {
                 console.log('Je moet wel drie getallen invoeren');
                 output = 'Not ready';
-                return false;
+                return;
             } else {
                 inputReady = true;
-                return false;
+                return;
             }
         } else if (pressed === '*') {
             if (inputArray.length <= 0) {
                 console.log("Vul eerst een getal in");
                 output = 'Not possible';
-                return false;
+                return;
             } else {
                 current--;
                 inputArray.pop();
                 realInputArray.pop();
-                return false;
+                return;
             }
         }
 
         if (current >= 3) { // If all the numbers are already cracked
             console.log("Al gehaald of al drie nummers ingetypt"); // Write output in the console because the code is cracked
-            return true; // Stop the function and return true
+            return; // Stop the function
         }
 
         if (pressed === null) { // If the result is that no button is pressed
             console.log(output); // Write output in the console
-            return false; // Stop the function and return false
+            return; // Stop the function
         } else if (pressed === code[current]) { // Check if the result is the current yet to solve number
             current++; // Update the current yet to solve number
             if (current >= 3) { // If all the numbers have been cracked
@@ -245,21 +245,21 @@ const opdracht_3 = function (p5) {
             inputArray.push(2); // Save in the array that the user pressed a correct switch
             console.log(inputArray);
             realInputArray.push(pressed);
-            return true; // Stop the function and return true
+            return; // Stop the function
         } else if (code.includes(pressed)) { // Check if te number is in the code
             current++; // Update the current yet to solve number
             console.log(output); // Write output in the console
             inputArray.push(1); // Save in the array that the user pressed a semi correct switch
             console.log(inputArray);
             realInputArray.push(pressed);
-            return false; // Stop the function and return false
+            return; // Stop the function
         } else { // If the pressed number is not the current yet to solve number and is not in the code
             current++; // Update the current yet to solve number
             console.log(output); // Write nah in the console
             inputArray.push(0); // Save in the array that the user pressed a wrong switch
             console.log(inputArray);
             realInputArray.push(pressed);
-            return false; // Stop the function and return false
+            return; // Stop the function
         }
     }
 
