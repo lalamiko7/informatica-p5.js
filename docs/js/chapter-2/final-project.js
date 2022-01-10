@@ -26,6 +26,21 @@ const canvas =  function (p5) {
 
     let brush;
     let thickness;
+    let lineColor;
+
+    function mouseInCanvas() {
+        return p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 1.5 * size && p5.mouseY <= p5.height;
+    }
+
+    function createButton(x, y, id, color) {
+        buttons.push([id, x, y, size, color]);
+
+        p5.strokeWeight(5);
+        p5.stroke('#B3CDE0');
+        p5.fill(color);
+        //p5.noStroke();
+        p5.circle(x, y, size)
+    }
 
     p5.setup = function () {
         elementWidth = document.getElementById('canvas').clientWidth;
@@ -43,25 +58,10 @@ const canvas =  function (p5) {
         colorList = [p5.color('#e71223'), p5.color('#f6630d'), p5.color('#ffc112'),
             p5.color('#65cc02'), p5.color('#00a0d7'), p5.color('#5a2e90')];
 
-        r = 100;
-        g = 151;
-        b = 177;
+
+        lineColor = p5.color(100, 151, 177);
 
         thickness = 5;
-    }
-
-    function mouseInCanvas() {
-        return p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 1.5 * size && p5.mouseY <= p5.height;
-    }
-
-    function createButton(x, y, id, color) {
-        buttons.push([id, x, y, size, color]);
-
-        p5.strokeWeight(5);
-        p5.stroke('#B3CDE0');
-        p5.fill(color);
-        //p5.noStroke();
-        p5.circle(x, y, size)
     }
 
     p5.draw = function () {
@@ -69,6 +69,36 @@ const canvas =  function (p5) {
             switch (p5.key) {
                 case ' ':
                     p5.background('lightgrey');
+                    break;
+                case '1':
+                    thickness = 5;
+                    break;
+                case '2':
+                    thickness = 7.5;
+                    break;
+                case '3':
+                    thickness = 10;
+                    break;
+                case '4':
+                    thickness = 12.5;
+                    break;
+                case '5':
+                    thickness = 15;
+                    break;
+                case '6':
+                    thickness = 20;
+                    break;
+                case '7':
+                    thickness = 25;
+                    break;
+                case '8':
+                    thickness = 30;
+                    break;
+                case '9':
+                    thickness = 40;
+                    break;
+                case 's':
+                    lineColor = p5.color(p5.random(0, 255), p5.random(0, 255), p5.random(0, 255));
             }
         }
 
@@ -84,6 +114,8 @@ const canvas =  function (p5) {
         p5.stroke('#B3CDE0');
         p5.line(0, y, p5.width, y);
         p5.line(0, p5.height - 2.5, p5.width, p5.height - 2.5);
+
+        p5.line(0, 2 * y, 2 * size, 2 * y);
 
         y = y/2;
 
@@ -109,6 +141,11 @@ const canvas =  function (p5) {
                         p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
                         break;
                     case 'dot':
+                        break;
+                    default:
+                        p5.stroke(lineColor);
+                        p5.strokeWeight(thickness);
+                        p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
                         break;
                 }
             }
