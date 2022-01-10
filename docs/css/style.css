@@ -44,7 +44,7 @@ body {
 
 .finalProject {
     width: 100%;
-    height: 50vw;
+    height: calc(150vh - 25vw);
 }
 
 .finalProject .canvas {
