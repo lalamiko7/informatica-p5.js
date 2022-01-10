@@ -13,8 +13,8 @@ const opdracht_1 = function (p5) {
         p5.ellipseMode(p5.CENTER);
         p5.noStroke();
 
-        x = 300;
-        y = 60;
+        x = p5.width/2;
+        y = p5.height/2;
         diameter = 40;
     }
 
@@ -55,40 +55,42 @@ const opdracht_2 =  function (p5) {
         start = true;
 
         p5.background('lightgray');
+
         p5.strokeWeight(20);
         p5.smooth();
 
         x = p5.width/2;
         y = p5.height/2;
 
-        r = 70;
-        g = 70;
-        b = 70;
+        r = 100;
+        g = 151;
+        b = 177;
 
     }
 
     p5.draw = function () {
         p5.stroke(r, g, b);
         p5.fill(r, g, b);
+
         if (start === false) {
             p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
         }
+
         d = p5.dist(p5.mouseX, p5.mouseY, x, y);
 
         if (p5.mouseIsPressed){
             if (d < radius) {
                 if (start === true) {
                     start = false;
+                } else {
+                    r = p5.random(0, 255);
+                    g = p5.random(0, 255);
+                    b = p5.random(0, 255);
                 }
-                r = p5.random(0, 255);
-                g = p5.random(0, 255);
-                b = p5.random(0, 255);
             }
         }
 
-        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
-            p5.ellipse(x, y, radius, radius);
-        }
+        p5.ellipse(x, y, radius, radius);
     }
 }
 
@@ -407,7 +409,7 @@ const opdracht_3 = function (p5) {
 
         if (colorsArray[2] === redArray) {
             current = 69;
-            output = "Gehaald";
+            output = "Gehaald!";
         }
 
         color1Array = colorsArray[0];

@@ -6,34 +6,36 @@
 
         <title>Processing met JavaScript</title>
 
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/header.css">
-        <link rel="stylesheet" href="../../../css/footer.css">
+        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../css/header.css">
+        <link rel="stylesheet" href="../../css/footer.css">
 
         <script src="https://kit.fontawesome.com/3e99f49328.js" crossorigin="anonymous"></script>
-        <script src="../../../js/p5.js"></script>
+        <script src="../../js/p5.js"></script>
     </head>
     <body>
         <nav>
             <div class="nav-logo">
-                <a class="nav-logo-link" href="../../../index.html">
-                    <img id="nav-logo-img" src="../../../img/logo.png">
+                <a class="nav-logo-link" href="../../index.html">
+                    <img id="nav-logo-img" src="../../img/logo.png">
                 </a>
             </div>
             <div id="nav-name" class="nav-name">Hoofdstuk 2, Les 2!</div>
             <div class="nav-links-container">
                 <div id="nav-links" class="nav-links">
-                    <a href="../../../index.html">Home</a>
+                    <a href="../../index.html">Home</a>
                     <a class="fake">Hoofdstuk 1:</a>
-                    <a href="../../../pages/chapter-1/les-1/1.0.html">1</a>
-                    <a href="../../../pages/chapter-1/les-2/2.0.html">2</a>
-                    <a href="../../../pages/chapter-1/les-3/3.0.html">3</a>
-                    <a href="../../../pages/chapter-1/final-project.html">E</a>
+                    <a href="../chapter-1/les-1/1.0.html">1</a>
+                    <a href="../chapter-1/les-2/2.0.html">2</a>
+                    <a href="../chapter-1/les-3/3.0.html">3</a>
+                    <a href="../chapter-1/final-project.html">E</a>
                     <a class="fake">Hoofdstuk 2:</a>
-                    <a href="../../../pages/chapter-2/les-1/1.0.html">1</a>
-                    <a href="../../../pages/chapter-2/les-2/2.0.html" class="active">2</a>
+                    <a href="les-1/1.0.html">1</a>
+                    <a href="#" class="active">2</a>
+                    <a href="./les-3.html">3</a>
+                    <a href="./final-project.html">E</a>
                     <a class="fake">Overig:</a>
-                    <a href="../../../pages/test.html">Testing</a>
+                    <a href="../test.html">Testing</a>
                 </div>
             </div>
             <div class="nav-menu">
@@ -52,7 +54,21 @@
                 <div class="canvas" id="canvas1"></div>
                 <div class="text">
                     <div>
-
+                        <h1>Opdracht één: Hover and Conditional Statements</h1>
+                        <p>In deze opdracht worden verklaringen geïntroduceerd. Hiervoor wordt het variabele type boolean gebruikt.
+                        Met een 'als dan' programmeer blok wordt het stukje codering eronder uitgevoerd als de verklaring erboven
+                        waar is.</p>
+                        <h2>Het programma hier links werkt als volgt:</h2>
+                        <ul>
+                            <li>P5js registreert waar je muis zich op het canvas bevindt.</li>
+                            <li>Op die plek wordt een cirkel getekend.</li>
+                            <li>Zodra je muis beweegt, gaat het middelpunt van de cirkel mee.</li>
+                            <li>Als je de muis heel snel verplaatst moet de cirkel nog bijwerken en komt je muis buiten
+                            de cirkelrand te liggen.</li>
+                            <li>Als dat gebeurd verkleurt de cirkel. Het veranderd weer terug als je muis opnieuw binnen de cirkel is.</li>
+                        </ul>
+                        <h2>Krijg jij de muis uit de cirkel?</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.1">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
             </div>
@@ -62,9 +78,9 @@
             <div class="project">
                 <div class="text">
                     <div>
-                        <h1>Opdracht twee: Rechthoeken en klikken</h1>
-                        <p>Deze opdracht gaat over het leren werken met de variabel "mouseIsPressed". Als je ergens klikt op de webpagina
-                            en de knop ingedrukt houdt, krijgt het de waarde 'true'. Daardoor is het makkelijk te gebruiken met voorwaarden en
+                        <h1>Opdracht twee: Rectangles and Clicks</h1>
+                        <p>Deze opdracht gaat over het leren werken met de variabele "mouseIsPressed". Als je ergens klikt op de webpagina
+                            en de muisknop ingedrukt houdt, krijgt het de waarde 'true'. Daardoor is het makkelijk te gebruiken met voorwaarden en
                             verklaringen.</p>
                         <h2>De opdracht werkt als volgt:</h2>
                         <ul>
@@ -75,6 +91,7 @@
                             <li>Als je weer klikt op de cirkel in het midden en je muis vastgedrukt houdt, veranderd de kleur.</li>
                         </ul>
                         <h2>Probeer maar iets moois te maken!</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.2">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
                 <div class="canvas" id="canvas2"></div>
@@ -86,7 +103,7 @@
                 <div class="canvas" id="canvas3"></div>
                 <div class="text">
                     <div>
-                        <h1>Mini project: Light switch game</h1>
+                        <h1>Mini project: Light Switch Game</h1>
                         <p>Dit is onze versie van de Light Switch Game. Het zijn negen verschillende knopjes die samen
                             de drie lampjes bedienen. Weet jij ze allemaal rood te krijgen? Het is gebaseerd op het spel "Mastermind".</p>
                         <h2>Het spel werkt als volgt:</h2>
@@ -101,6 +118,7 @@
                         </ul>
                         <p>Los de code op om de game te winnen. De code bestaat uit 3 getallen.</p>
                         <h2>Weet jij de code te kraken?</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.3">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
             </div>
@@ -116,13 +134,13 @@
                         <li><a href="#" class="active">Home</a></li>
                         <p><br></p>
                         <li><a class="fake">Hoofdstuk 1:</a></li>
-                        <a href="../../../pages/chapter-1/les-1/1.0.html">Les-1</a>
-                        <a href="../../../pages/chapter-1/les-2/2.0.html">Les-2</a>
-                        <a href="../../../pages/chapter-1/les-3/3.0.html">Les-3</a>
-                        <a href="../../../pages/chapter-1/final-project.html">Eindopdracht</a>
+                        <a href="../chapter-1/les-1/1.0.html">Les-1</a>
+                        <a href="../chapter-1/les-2/2.0.html">Les-2</a>
+                        <a href="../chapter-1/les-3/3.0.html">Les-3</a>
+                        <a href="../chapter-1/final-project.html">Eindopdracht</a>
                         <p><br></p>
                         <li><a class="fake">Overig:</a></li>
-                        <a href="../../../pages/test.html">Testing</a>
+                        <a href="../test.html">Testing</a>
                     </ul>
                 </div>
                 <div class="line"></div>
@@ -155,7 +173,7 @@
             <div class="copyright">&copy;2021 - 2022: ashamedweaver6 madruffs8</div>
         </footer>
 
-        <script src="../../../js/main.js"></script>
-        <script src="../../../js/chapter-2/les-2.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/chapter-2/les-2.js"></script>
     </body>
 </html>
