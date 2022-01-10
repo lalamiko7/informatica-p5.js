@@ -29,11 +29,15 @@ const canvas =  function (p5) {
     let lineColor;
 
     function mouseInCanvas() {
-        return p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 1.5 * size && p5.mouseY <= p5.height;
+        return p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height;
     }
 
     function createButton(x, y, id, color) {
-        buttons.push([id, x, y, size, color]);
+        if (buttons.length >= 12) {
+            buttons = [];
+        } else {
+            buttons.push([id, x, y, size, color]);
+        }
 
         p5.strokeWeight(5);
         p5.stroke('#B3CDE0');
@@ -115,7 +119,9 @@ const canvas =  function (p5) {
         p5.line(0, y, p5.width, y);
         p5.line(0, p5.height - 2.5, p5.width, p5.height - 2.5);
 
-        p5.line(0, 2 * y, 2 * size, 2 * y);
+        p5.rect(10, 1.5 * y, 10 + 2 * size, 3.5 * y);
+        p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
+        p5.text();
 
         y = y/2;
 
