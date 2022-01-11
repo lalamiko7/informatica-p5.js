@@ -27,6 +27,8 @@ const canvas =  function (p5) {
     let lineColor;
     let button;
 
+    let eraser;
+
     function mouseInCanvas() {
         return p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height;
     }
@@ -40,17 +42,18 @@ const canvas =  function (p5) {
         p5.strokeWeight(5);
         p5.stroke('#B3CDE0');
         p5.fill(color);
-        p5.circle(x, y, size)
+        p5.ellipse(x, y, size, size);
     }
 
     function checkButton(mouseX, mouseY) {
+        console.log(buttons);
         button = [];
         for (let i = 0; i in buttons; i++) {
             let bX = buttons[i][1];
             let bY = buttons[i][2];
             let bSize = buttons[i][3];
             //console.log(p5.dist(mouseX, mouseY, bX, bY), bSize);
-            if (p5.dist(mouseX, mouseY, bX, bY) <= bSize) {
+            if (p5.dist(bX, bY, mouseX, mouseY) <= bSize / 2) {
                 button.push(buttons[i][0]);
                 button.push(buttons[i][1]);
                 return button;
@@ -81,6 +84,8 @@ const canvas =  function (p5) {
 
         thickness = 5;
 
+        eraser = 0;
+
         p5.noStroke();
         p5.fill('#6497B1');
         p5.rect(0, 0, p5.width, 1.5 * size);
@@ -96,8 +101,8 @@ const canvas =  function (p5) {
 
 
         p5.rect(10, 1.5 * y, 10 + 2 * size, 3.5 * y);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
+        createButton((10 + 20 + 2 * size) / 2, y + 1.5 * size, 'brush1', 'red', true);
+        createButton((10 + 20 + 2 * size) / 2, y + 2.5 * size, 'brush2', 'red', true);
         createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
         createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
         p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
@@ -172,10 +177,10 @@ const canvas =  function (p5) {
 
 
         p5.rect(10, 1.5 * y, 10 + 2 * size, 3.5 * y);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'brush1', 'red');
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'brush2', 'red');
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'brush3', 'red');
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'brush4', 'red');
+        createButton((10 + 20 + 2 * size) / 2, y + 1.5 * size, 'brush1', 'red');
+        createButton((10 + 20 + 2 * size) / 2, y + 2.5 * size, 'brush2', 'red');
+        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
+        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
         p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
         createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
         //p5.text();
@@ -191,16 +196,18 @@ const canvas =  function (p5) {
             }
         }
 
-        d = p5.dist(p5.mouseX, p5.mouseY, x, y);
-
         if (p5.mouseIsPressed){
             if (mouseInCanvas()) {
                 switch (brush) {
                     case 'normal':
+                        p5.stroke(lineColor);
                         p5.strokeWeight(thickness);
                         p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
                         break;
                     case 'dot':
+                        p5.noStroke();
+                        p5.fill(lineColor);
+                        p5.circle(p5.mouseX, p5.mouseY, thickness);
                         break;
                     default:
                         p5.stroke(lineColor);
@@ -242,10 +249,25 @@ const canvas =  function (p5) {
                     break;
             }
         } else if (pressed[0] === 'eraser') {
+            if (eraser === 0) {
+                eraser++;
+            }
             lineColor = p5.color('lightgrey');
+            brush = 'normal';
+        } else if (pressed[0] === 'brush1') {
+            if (eraser === 1) {
+                lineColor = p5.color(100, 151, 177);
+                eraser--;
+            }
+            brush = 'normal';
+        } else if (pressed[0] === 'brush2') {
+            if (eraser === 1) {
+                lineColor = p5.color(100, 151, 177);
+                eraser--;
+            }
+            brush = 'dot';
         }
     }
 }
-
 
 new p5(canvas, 'canvas');
