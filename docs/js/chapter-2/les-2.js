@@ -136,23 +136,40 @@ const opdracht_3 = function (p5) {
     let one; // Value for the semi correct pressed switches
     let zero; // value for the wrong pressed switches
 
+    let wins;
+    let losses;
+    let tries;
+
     // Function for creating light switches
     // Arguments x, y for the coordinates and id for text in the switch
     function createLightSwitch(x, y, id) {
-        buttons.push([id, x, y, size]); // Push id and coordinates with size to the buttons list
-
         p5.strokeWeight(5); // Set stroke thickness to 5
         p5.stroke(102, 153, 255); // Set stroke color
         p5.fill(77, 77, 77); // Set fill color
-        p5.rect(x, y, size, size); // Create rectangle on (x,y) with size
-        p5.noStroke(); // Remove the stroke
-        p5.fill(102, 153, 255); // Set fill color
-        if (id === '*') { // Check if the id is a star
-            p5.textSize(50); // Large text size for the small * <- star
-            p5.text(id, x + 0.5 * size, y + 1.2 * size); // Create text, in the middle of the rectangle
-        } else { // Check if the id is something other than a star
-            p5.textSize(32); // Small text size for the already larger icons
-            p5.text(id, x + 0.5 * size, y + 0.8 * size); // Create text, in the middle of the rectangle
+        if (id === 'Opnieuw spelen') {
+            buttons.push([id, x, y, 5 * size]); // Push id and coordinates with size to the buttons list
+            p5.rect(x, y, 5 * size, size); // Create rectangle on (x,y) with size
+            p5.noStroke(); // Remove the stroke
+            p5.fill(102, 153, 255); // Set fill color
+            p5.textSize(25);
+            p5.text(id, x + 2.5 * size, y + 0.7 * size);
+        } else if (id === 'remove again') {
+            buttons.pop();
+            p5.stroke('lightgrey');
+            p5.fill('lightgrey'); // Set fill color
+            p5.rect(x, y, 5 * size, size); // Create rectangle on (x,y) with size
+        } else {
+            buttons.push([id, x, y, size]); // Push id and coordinates with size to the buttons list
+            p5.rect(x, y, size, size); // Create rectangle on (x,y) with size
+            p5.noStroke(); // Remove the stroke
+            p5.fill(102, 153, 255); // Set fill color
+            if (id === '*') { // Check if the id is a star
+                p5.textSize(50); // Large text size for the small * <- star
+                p5.text(id, x + 0.5 * size, y + 1.2 * size); // Create text, in the middle of the rectangle
+            } else { // Check if the id is something other than a star
+                p5.textSize(32); // Small text size for the already larger icons
+                p5.text(id, x + 0.5 * size, y + 0.8 * size); // Create text, in the middle of the rectangle
+            }
         }
     }
 
@@ -227,7 +244,23 @@ const opdracht_3 = function (p5) {
                 realInputArray.pop();
                 return;
             }
+        } else if (pressed === "Opnieuw spelen") {
+            //console.log('begin maar');
+            current = 0;
+            code = generateCode(3, false);
+            inputArray = [];
+            output = realInputArray = [];
+            zero = 0;
+            one = 0;
+            two = 0;
+            colorsArray = [yellowArray, yellowArray, yellowArray];
+            color1Array = colorsArray[0];
+            color2Array = colorsArray[1];
+            color3Array = colorsArray[2];
+            createLightSwitch(10, 10, 'remove again');
+            return;
         }
+
 
         if (current >= 3) { // If all the numbers are already cracked
             console.log("Al gehaald of al drie nummers ingetypt"); // Write output in the console because the code is cracked
@@ -278,16 +311,20 @@ const opdracht_3 = function (p5) {
         spacing = 40; // Define the space between the elements
 
         yellowArray = [255, 255, 128]; // Set the value for the default lamp color
-        redArray = [128, 0, 0]; // Red lamp value
+        redArray = [128, 1, 1]; // Red lamp value
         whiteArray = [240, 240, 240]; // White lamp value
 
         two = 0;
         one = 0;
         zero = 0;
 
+        wins = 0;
+        losses = 0;
+        tries = 0;
+
         realInputArray = [];
 
-        output = 'click a button'; // Set the standard for the output value
+        output = 'Click a button'; // Set the standard for the output value
 
         p5.textSize(32); // Standard text size
         p5.textAlign(p5.CENTER); // Align text to center
@@ -368,32 +405,37 @@ const opdracht_3 = function (p5) {
         // If user pressed three switches
         if (inputReady === true) {
             //console.log('klaar bitches');
-            inputArray.forEach(function (item) {
-                switch (item) {
-                    case 0:
-                        zero++;
-                        break;
-                    case 1:
-                        one++;
-                        break;
-                    case 2:
-                        two++;
-                        break;
-                }
-            });
-            i = 0;
-            while (i < 3) {
-                for (j = 0; j < two; j++) {
-                    colorsArray[i] = redArray;
-                    i++;
-                }
-                for (j = 0; j < one; j++) {
-                    colorsArray[i] = whiteArray;
-                    i++;
-                }
-                for (j = 0; j < zero; j++) {
-                    colorsArray[i] = yellowArray;
-                    i++;
+            tries++;
+            if (tries >= 8) {
+                colorsArray = [redArray, redArray, redArray];
+            } else {
+                inputArray.forEach(function (item) {
+                    switch (item) {
+                        case 0:
+                            zero++;
+                            break;
+                        case 1:
+                            one++;
+                            break;
+                        case 2:
+                            two++;
+                            break;
+                    }
+                });
+                i = 0;
+                while (i < 3) {
+                    for (j = 0; j < two; j++) {
+                        colorsArray[i] = redArray;
+                        i++;
+                    }
+                    for (j = 0; j < one; j++) {
+                        colorsArray[i] = whiteArray;
+                        i++;
+                    }
+                    for (j = 0; j < zero; j++) {
+                        colorsArray[i] = yellowArray;
+                        i++;
+                    }
                 }
             }
             zero = 0;
@@ -405,11 +447,24 @@ const opdracht_3 = function (p5) {
             realInputArray = [];
         }
 
-        output = realInputArray;
+        if (realInputArray !== []) {
+            output = realInputArray;
+        }
 
         if (colorsArray[2] === redArray) {
             current = 69;
-            output = "Gehaald!";
+            if (tries >= 8) {
+                output = "Gefaald!";
+                losses++
+            } else {
+                output = "Gehaald!";
+                wins++
+            }
+            if (current === 69) {
+                createLightSwitch(10, 10, 'Opnieuw spelen');
+                inputReady = false;
+                current++;
+            }
         }
 
         color1Array = colorsArray[0];
@@ -417,7 +472,7 @@ const opdracht_3 = function (p5) {
         color3Array = colorsArray[2];
 
         p5.fill(color1Array[0], color1Array[1], color1Array[2]); // Set fill color
-        p5.stroke(color1Array[0] * 0.5, color1Array[1] * 0.5, color1Array[2] * 0.5); // Set stroke color
+        p5.stroke(color1Array[0] * 1/2, color1Array[1] * 1/2, color1Array[2] * 1/2); // Set stroke color
         x = p5.width/2 - 0.3 * breedte; // X position for the light
         y = p5.height/2 - 0.6 * breedte; // Y position for the light
         p5.ellipse(x, y - size, size - 15, size - 15); // Create the first light
@@ -440,7 +495,7 @@ const opdracht_3 = function (p5) {
         p5.rect(x, y, breedte + 8, 40); // Create the box for the text
 
         p5.textSize(32); // Small text size
-        p5.fill(whiteArray[0], whiteArray[1], whiteArray[2]); // Set the fill color to red
+        p5.fill(whiteArray[0], whiteArray[1], whiteArray[2]); // Set the fill color
         p5.text(output, x + 2.5 * size, y + 0.8 * size); // Create text
     }
 
