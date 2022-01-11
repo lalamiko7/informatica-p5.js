@@ -20,7 +20,7 @@
                     <img id="nav-logo-img" src="../../img/logo.png">
                 </a>
             </div>
-            <div id="nav-name" class="nav-name">Hoofdstuk 2, Les 2!</div>
+            <div id="nav-name" class="nav-name">Hoofdstuk 2, Les 1!</div>
             <div class="nav-links-container">
                 <div id="nav-links" class="nav-links">
                     <a href="../../index.html">Home</a>
@@ -30,8 +30,8 @@
                     <a href="../chapter-1/les-3/3.0.html">3</a>
                     <a href="../chapter-1/final-project.html">E</a>
                     <a class="fake">Hoofdstuk 2:</a>
-                    <a href="./les-1.html">1</a>
-                    <a href="#" class="active">2</a>
+                    <a href="#" class="active">1</a>
+                    <a href="./les-2.html">2</a>
                     <a href="./les-3.html">3</a>
                     <a href="./final-project.html">E</a>
                     <a class="fake">Overig:</a>
@@ -54,21 +54,19 @@
                 <div class="canvas" id="canvas1"></div>
                 <div class="text">
                     <div>
-                        <h1>Opdracht één: Hover and Conditional Statements</h1>
-                        <p>In deze opdracht worden verklaringen geïntroduceerd. Hiervoor wordt het variabele type boolean gebruikt.
-                        Met een 'als dan' programmeer blok wordt het stukje codering eronder uitgevoerd als de verklaring erboven
-                        waar is.</p>
-                        <h2>Het programma hier links werkt als volgt:</h2>
+                        <h1>Opdracht één: Conditionals and If Statements</h1>
+                        <p>Deze opdracht introduceert booleans en voorwaardelijke uitspraken. Er wordt vooral gekeken naar hoe een if-then statement werkt en waarbij je het kan gebruiken.</p>
+
+                        <h2>De opdracht werkt als volgt:</h2>
+                        
                         <ul>
-                            <li>P5js registreert waar je muis zich op het canvas bevindt.</li>
-                            <li>Op die plek wordt een cirkel getekend.</li>
-                            <li>Zodra je muis beweegt, gaat het middelpunt van de cirkel mee.</li>
-                            <li>Als je de muis heel snel verplaatst moet de cirkel nog bijwerken en komt je muis buiten
-                            de cirkelrand te liggen.</li>
-                            <li>Als dat gebeurd verkleurt de cirkel. Het veranderd weer terug als je muis opnieuw binnen de cirkel is.</li>
+                            <li>Houd de muis links op het vlak om het grijs te maken.</li>
+                            <li>Houd de muis rechts op het vlak om het groen te maken.</li>
+                            <li>Het blauwe blokje verandert van grootte wanneer je dit doet!</li>
                         </ul>
-                        <h2>Krijg jij de muis uit de cirkel?</h2>
-                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.1">Klik hier voor het boek.</a></p>
+
+                        <h2>Kan jij de easter egg vinden?</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_1.1">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
             </div>
@@ -78,20 +76,18 @@
             <div class="project">
                 <div class="text">
                     <div>
-                        <h1>Opdracht twee: Rectangles and Clicks</h1>
-                        <p>Deze opdracht gaat over het leren werken met de variabele "mouseIsPressed". Als je ergens klikt op de webpagina
-                            en de muisknop ingedrukt houdt, krijgt het de waarde 'true'. Daardoor is het makkelijk te gebruiken met voorwaarden en
-                            verklaringen.</p>
+                        <h1>Opdracht twee: Conditionals and If, Else, If, Else Statements</h1>
+                        <p>Deze opdracht bouwt voort op de kennis  over voorwaardelijke uitspraken. Er moest een stoplicht gemaakt worden die van kleur kan veranderen afhankelijk van de muispositie.</p>
+
                         <h2>De opdracht werkt als volgt:</h2>
+
                         <ul>
-                            <li>p5js houdt constant in de gaten waar de muis zich bevindt.</li>
-                            <li>Als je klikt, en je muis is op de cirkel in het midden kan je gaan tekenen.</li>
-                            <li>Het tekenen werkt omdat er heel vaak achter elkaar een cirkel in de juiste kleur wordt getekend.
-                                Deze cirkel heeft altijd dezelfde straal en het middelpunt bevindt zich op je muis.</li>
-                            <li>Als je weer klikt op de cirkel in het midden en je muis vastgedrukt houdt, veranderd de kleur.</li>
+                            <li>De blokken links boven volgen je muis. Laat ze op- en neerlopen.</li>
+                            <li>Het stoplicht volgt je muis en verandert van kleur wanneer jij op het juiste vak zit.</li>
                         </ul>
-                        <h2>Probeer maar iets moois te maken!</h2>
-                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.2">Klik hier voor het boek.</a></p>
+
+                        <h2>Probeer het nu!</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_1.2">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
                 <div class="canvas" id="canvas2"></div>
@@ -103,27 +99,68 @@
                 <div class="canvas" id="canvas3"></div>
                 <div class="text">
                     <div>
-                        <h1>Mini project: Light Switch Game</h1>
-                        <p>Dit is onze versie van de Light Switch Game. Het zijn negen verschillende knopjes die samen
-                            de drie lampjes bedienen. Weet jij ze allemaal rood te krijgen? Het is gebaseerd op het spel "Mastermind".</p>
-                        <h2>Het spel werkt als volgt:</h2>
+                        <h1>Opdracht drie: Logical Operators AND and OR</h1>
+                        <p>Deze opdracht bouwt voort op voorwaardelijke uitspraken met behulp van de logische operatoren && en ||. Verschillende blokjes konden verlicht worden door er met de muis overheen te bewegen.</p>
+
+                        <h2>De opdracht werkt als volgt:</h2>
+                        
                         <ul>
-                            <li> Je toetst drie verschillende getallen in. Als je een fout maakt kan je een getal terug door op
-                                het sterretje '*' te klikken. </li>
-                            <li>Als je drie getallen hebt ingevoerd klik je op het hekje '#'. Nu gaan er als het goed is lichtjes branden.</li>
-                            <li>Brandt een lampje rood? Dan heb je een juist teken op de juiste plaats.</li>
-                            <li>Brandt een lampje wit? Dan heb je een juist teken op de foute plaats.</li>
-                            <li>Brandt een lampje geel? Dan heb je een fout teken en de foute plaats.</li>
-                            <li>De lampjes bovenin zijn standaard geel gekleurd.</li>
+                            <li>Beweeg je muis over de blokken heen en ontdek welke kleuren erachter verschuiven.</li>
                         </ul>
-                        <p>Los de code op om de game te winnen. De code bestaat uit 3 getallen.</p>
-                        <h2>Weet jij de code te kraken?</h2>
-                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_2.3">Klik hier voor het boek.</a></p>
+
+                        <h2>Kan jij alle kleuren vinden?</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_1.3">Klik hier voor het boek.</a></p>
                     </div>
                 </div>
             </div>
 
             <br>
+            
+            <div class="project">
+                <div class="text">
+                    <div>
+                        <h1>Opdracht vier: Draw With Mouse</h1>
+                        <p>Deze opdracht introduceert de programmastroom van p5 en laat zien hoe setup() en draw() werken. Door de muispositievariabelen van p5 te gebruiken en de achtergrondfunctie uit te schakelen, kan je onwijs mooie dingen creëren. </p>
+
+                        <h2>De opdracht werkt als volgt:</h2>
+                        
+                        <ul>
+                            <li>Beweeg over het canvas heen om te tekenen.</li>
+                            <li>Verander je snelheid en zie wat er gebeurd met de dikte!</li>
+                        </ul>
+
+                        <h2>Maak je eigen mooie tekening!</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_1.4">Klik hier voor het boek.</a></p>
+                    </div>
+                </div>
+                <div class="canvas" id="canvas4"></div>
+            </div>
+            
+            <br>
+            
+            <div class="project">
+                <div class="canvas" id="canvas5"></div>
+                <div class="text">
+                    <div>
+                        <h1>Opdracht vijf: Map Function</h1>
+
+                        <p>Deze opdracht introduceert de kaartfunctie en past deze toe op het wijzigen van de achtergrondkleur van een schets in grijswaarden, RGB en HSB-kleurbereiken.Hierbij worden de variabelen 'pmouseX' en 'pmouseY' gebruikt.</p>
+
+                        <h2>De opdracht werkt als volgt:</h2>
+                        
+                        <ul>
+                            <li>Beweeg met je muis over het canvas heen en zie de kleuren veranderen. </li>
+                            <li>Hoe meer je naar beneden gaat, hoe feller de kleur!</li>
+                        </ul>
+
+                        <h2>Kan jij de kleur op geel krijgen?</h2>
+                        <p><a target="_blank" href="https://nycdoe-cs4all.github.io/units/2/lessons/lesson_1.5">Klik hier voor het boek.</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+
         </div>
 
         <footer>
@@ -174,6 +211,6 @@
         </footer>
 
         <script src="../../js/main.js"></script>
-        <script src="../../js/chapter-2/les-2.js"></script>
+        <!--<script src="../../js/chapter-2/les-1.js"></script>-->
     </body>
 </html>
