@@ -453,7 +453,7 @@ const opdracht_3 = function (p5) {
 
         if (colorsArray[2] === redArray) {
             current = 69;
-            if (tries >= 8) {
+            if (tries >= 9) {
                 output = "Gefaald!";
                 losses++
             } else {

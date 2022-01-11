@@ -182,7 +182,7 @@ const canvas =  function (p5) {
         createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
         createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
         p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
+        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'lightgrey');
         //p5.text();
 
         y = y/2;
