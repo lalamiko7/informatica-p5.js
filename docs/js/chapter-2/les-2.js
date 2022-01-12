@@ -157,7 +157,7 @@ const opdracht_3 = function (p5) {
             buttons.pop();
             p5.stroke('lightgrey');
             p5.fill('lightgrey'); // Set fill color
-            p5.rect(x, y, 5 * size, size); // Create rectangle on (x,y) with size
+            p5.rect(x - 1, y - 1, 5 * size + 2, size + 2); // Create rectangle on (x,y) with size
         } else {
             buttons.push([id, x, y, size]); // Push id and coordinates with size to the buttons list
             p5.rect(x, y, size, size); // Create rectangle on (x,y) with size
@@ -198,6 +198,7 @@ const opdracht_3 = function (p5) {
                     }
                     code.push(number); // Add number to code
                 }
+                console.log('Code: %o', code); // Write the code to the console
                 return code; // Return the code
             }
         }
@@ -258,42 +259,40 @@ const opdracht_3 = function (p5) {
             color2Array = colorsArray[1];
             color3Array = colorsArray[2];
             createLightSwitch(10, 10, 'remove again');
+            p5.noStroke();
+            x = p5.width/2 - 0.6 * breedte;
+            y = p5.height/2 - 0.8 * breedte;
+            p5.fill(115, 115, 115);
+            p5.rect(x, y - size, 5 * size, 1.5 * size);
             return;
         }
 
-
-        if (current >= 3) { // If all the numbers are already cracked
-            console.log("Al gehaald of al drie nummers ingetypt"); // Write output in the console because the code is cracked
-            return; // Stop the function
-        }
-
         if (pressed === null) { // If the result is that no button is pressed
-            console.log(output); // Write output in the console
+            //console.log(realInputArray); // Write output in the console
+            return; // Stop the function
+        } else if (current >= 3) { // If all the numbers are already cracked
+            console.log("Al gehaald of al drie nummers ingetypt"); // Write output in the console because the code is cracked
             return; // Stop the function
         } else if (pressed === code[current]) { // Check if the result is the current yet to solve number
             current++; // Update the current yet to solve number
-            if (current >= 3) { // If all the numbers have been cracked
-                console.log(output); // Write output in the console because the code is cracked
-            } else { // If there are still numbers in the code to be cracked
-                console.log(output); // Write output in the console
-            }
             inputArray.push(2); // Save in the array that the user pressed a correct switch
             console.log(inputArray);
             realInputArray.push(pressed);
+            console.log(realInputArray); // Write output in the console
             return; // Stop the function
         } else if (code.includes(pressed)) { // Check if te number is in the code
             current++; // Update the current yet to solve number
-            console.log(output); // Write output in the console
             inputArray.push(1); // Save in the array that the user pressed a semi correct switch
             console.log(inputArray);
             realInputArray.push(pressed);
+            console.log(realInputArray); // Write output in the console
             return; // Stop the function
         } else { // If the pressed number is not the current yet to solve number and is not in the code
             current++; // Update the current yet to solve number
-            console.log(output); // Write nah in the console
             inputArray.push(0); // Save in the array that the user pressed a wrong switch
             console.log(inputArray);
             realInputArray.push(pressed);
+            console.log(realInputArray); // Write output in the console
             return; // Stop the function
         }
     }
@@ -330,7 +329,7 @@ const opdracht_3 = function (p5) {
         p5.textAlign(p5.CENTER); // Align text to center
 
         code = generateCode(3, false); // Run the generateCode function with said arguments
-        console.log('Code: %o', code); // Write the code to the console
+        //console.log('Code: %o', code); // Write the code to the console
 
         colorsArray = [yellowArray, yellowArray, yellowArray]; // Set default lamp color
 
@@ -406,7 +405,7 @@ const opdracht_3 = function (p5) {
         if (inputReady === true) {
             //console.log('klaar bitches');
             tries++;
-            if (tries >= 8) {
+            if (tries >= 10) {
                 colorsArray = [redArray, redArray, redArray];
             } else {
                 inputArray.forEach(function (item) {
@@ -442,18 +441,15 @@ const opdracht_3 = function (p5) {
             one = 0;
             two = 0;
             inputArray = [];
-            current = 0;
+            current = 69;
             inputReady = false;
             realInputArray = [];
         }
 
-        if (realInputArray !== []) {
-            output = realInputArray;
-        }
+        output = realInputArray;
 
         if (colorsArray[2] === redArray) {
-            current = 69;
-            if (tries >= 9) {
+            if (tries >= 10) {
                 output = "Gefaald!";
                 losses++
             } else {
@@ -462,6 +458,7 @@ const opdracht_3 = function (p5) {
             }
             if (current === 69) {
                 createLightSwitch(10, 10, 'Opnieuw spelen');
+                console.log("test");
                 inputReady = false;
                 current++;
             }
