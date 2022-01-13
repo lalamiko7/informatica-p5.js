@@ -229,3 +229,62 @@ nav {
 .nav-links .active:hover {
     color: #F0F7F8;
 }
+
+@media only screen and (max-width: 1000px) {
+    .nav-name {
+        display: none;
+    }
+
+    .nav-menu-symbool {
+        /* border: 1px solid black; */
+        cursor: pointer;
+        width: fit-content;
+        margin: 0 0 0 80%;
+    }
+
+    .nav-menu {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 70%;
+        /* border: 1px solid black; */
+    }
+
+    .streepje-1, .streepje-2, .streepje-3 {
+        width: 5vw;
+        height: 0.8vw;
+        background-color: #F0F7F8;
+        margin: 0.8vw 0 0.8vw 0;
+    }
+
+    @keyframes nav-menu-symbool-animatie-close-streepje-1 {
+        0% {
+            transform: translate(0, 2.35vw) rotate(405deg);
+        } 100% {
+              transform: translate(0, 0) rotate(0);
+          }
+    }
+
+    @keyframes nav-menu-symbool-animatie-open-streepje-3 {
+        0% {
+            transform: translate(0, 0) rotate(0);
+        } 100% {
+              transform: translate(0, -2.35vw) rotate(-405deg);
+          }
+    }
+
+    @keyframes nav-menu-symbool-animatie-close-streepje-1 {
+        0% {
+            transform: translate(0, 2.35vw) rotate(405deg);
+        } 100% {
+              transform: translate(0, 0) rotate(0);
+          }
+    }
+
+    @keyframes nav-menu-symbool-animatie-close-streepje-3 {
+        0% {
+            transform: translate(0, -2.35vw) rotate(-405deg);
+        } 100% {
+            transform: translate(0, 0) rotate(0);
+        }
+    }
+}
