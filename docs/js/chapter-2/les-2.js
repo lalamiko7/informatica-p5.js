@@ -437,11 +437,15 @@ const opdracht_3 = function (p5) {
                     }
                 }
             }
+            if (two >= 3) {
+                current = 69;
+            } else {
+                current = 0;
+            }
             zero = 0;
             one = 0;
             two = 0;
             inputArray = [];
-            current = 69;
             inputReady = false;
             realInputArray = [];
         }
