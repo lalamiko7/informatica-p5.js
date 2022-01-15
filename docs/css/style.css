@@ -22,21 +22,22 @@ body {
 
 .project {
     width: 100%;
-    height: calc(120vh - 30vw);
+    display: flex;
+    height: max-content;
 }
 
 .canvas {
     width: 50%;
     float: left;
     background-color: purple;
-    height: 100%;
+    height: 550px;
+    display: flex;
 }
 
 .text {
     width: 50%;
     background-color: #6497B1;
     float: left;
-    height: 100%;
     text-align: left;
     color: #F0F7F8;
     display: flex;
@@ -45,18 +46,23 @@ body {
 
 .finalProject {
     width: 100%;
-    height: calc(170vh - 30vw);
 }
 
 .finalProject .canvas {
     width: 100%;
-    height: 50%;
+    height: 600px;
 }
 
-.finalProject .text {
+.finalProject .text-container {
+    height: 525px;
+    align-items: center;
+    width: 100%;
+}
+
+.finalProject .text-container .text {
     width: 50%;
-    height: 50%;
-    align-items: normal;
+    align-items: center;
+    height: 100%;
 }
 
 b {
@@ -78,25 +84,46 @@ b {
     color: #B3CDE0;
 }
 
+@media only screen and (min-width: 1000px) and (max-width: 1100px) {
+    .canvas {
+        height: 600px;
+    }
+}
+
 
 @media only screen and (max-width: 1000px) {
     .wrapper {
         width: 90%;
     }
 
+    .project {
+        display: block;
+    }
+
     .canvas {
         width: 100%;
+        height: 475px;
+        display: block;
     }
 
     .text {
-        width: 100%;
-    }
-
-    .project {
-        height: calc(110vh - 70vw);
+        width: 96%;
+        display: block;
+        padding: 2%;
     }
 
     .last {
         margin-bottom: 5vw;
     }
+
+    .finalProject .text-container {
+        height: fit-content;
+    }
+
+    .finalProject .text-container .text {
+        width: 96%;
+        height: fit-content;
+        margin-bottom: 1%;
+    }
+
 }
