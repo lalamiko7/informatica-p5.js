@@ -35,6 +35,12 @@ const opdracht_1 = function (p5) {
             p5.ellipse(x, y, diameter, diameter);
         }
     }
+
+    p5.mousePressed = function () {
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            return false;
+        }
+    }
 }
 
 const opdracht_2 =  function (p5) {
@@ -91,6 +97,12 @@ const opdracht_2 =  function (p5) {
         }
 
         p5.ellipse(x, y, radius, radius);
+    }
+
+    p5.mousePressed = function () {
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            return false;
+        }
     }
 }
 
