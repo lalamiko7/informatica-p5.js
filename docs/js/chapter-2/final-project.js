@@ -42,20 +42,44 @@ const canvas =  function (p5) {
         p5.strokeWeight(5);
         p5.stroke('#B3CDE0');
         p5.fill(color);
-        p5.ellipse(x, y, size, size);
+
+        if (id === 'eraser') {
+            p5.rect(x, y + 5, 2 * size + 10, 1.5 * size);
+        } else if (id === 'brush1' || id === 'brush2' || id === 'brush3') {
+            p5.rect(x, y + 5, 2 * size + 10, 1.2 * size);
+        }else {
+            p5.ellipse(x, y, size, size);
+        }
     }
 
     function checkButton(mouseX, mouseY) {
-        console.log(buttons);
-        button = [];
+        //console.log(buttons);
         for (let i = 0; i in buttons; i++) {
+            button = [];
             let bX = buttons[i][1];
             let bY = buttons[i][2];
             let bSize = buttons[i][3];
+            let dist = p5.dist(bX, bY, mouseX, mouseY);
             //console.log(p5.dist(mouseX, mouseY, bX, bY), bSize);
-            if (p5.dist(bX, bY, mouseX, mouseY) <= bSize / 2) {
-                button.push(buttons[i][0]);
-                button.push(buttons[i][1]);
+            button.push(buttons[i][0]);
+            button.push(buttons[i][1]);
+            //console.log('X:', bX, ' Y:', bY, ' Size:', bSize, ' MX:', mouseX, ' MY', mouseY);
+            //console.log('Size:', dist);
+            if (dist < bSize / 2) {
+                if (buttons[i][0] === 'eraser' && mouseY < 6 * bSize && mouseX < 10) {
+                    return null;
+                } else if (buttons[i][0] === 'brush1' && (mouseY < 2.2 * bSize || mouseX < 10)) {
+                    return null;
+                } else if (buttons[i][0] === 'brush2' && (mouseY < 3.5 * bSize || mouseX < 10)) {
+                    return null;
+                } else if (buttons[i][0] === 'brush3' && (mouseY < 4.8 * bSize || mouseX < 10)) {
+                    return null;
+                }
+                return button;
+            }
+            if ((buttons[i][0] === 'eraser' || buttons[i][0] === 'brush1' || buttons[i][0] === 'brush2' ||
+                buttons[i][0] === 'brush3') && p5.mouseX >= bX && p5.mouseY >= bY && p5.mouseX <= bX + 2 * bSize &&
+                p5.mouseY <= bY + 1.5 * bSize) {
                 return button;
             }
         }
@@ -101,12 +125,11 @@ const canvas =  function (p5) {
 
 
         p5.rect(10, 1.5 * y, 10 + 2 * size, 3.5 * y);
-        createButton((10 + 20 + 2 * size) / 2, y + 1.5 * size, 'brush1', 'red', true);
-        createButton((10 + 20 + 2 * size) / 2, y + 2.5 * size, 'brush2', 'red', true);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
-        p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red', true);
+        createButton(10, 2.2 * size, 'brush1', 'red', true);
+        createButton(10, 3.5 * size, 'brush2', 'red', true);
+        createButton(10, 4.8 * size, 'brush3', 'red', true);
+        //p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
+        createButton(10, 6 * size, 'eraser', 'red', true);
         //p5.text();
 
         y = y/2;
@@ -120,7 +143,7 @@ const canvas =  function (p5) {
             }
         }
 
-        console.log(buttons);
+        //console.log(buttons);
     }
 
     p5.draw = function () {
@@ -177,12 +200,11 @@ const canvas =  function (p5) {
 
 
         p5.rect(10, 1.5 * y, 10 + 2 * size, 3.5 * y);
-        createButton((10 + 20 + 2 * size) / 2, y + 1.5 * size, 'brush1', 'red');
-        createButton((10 + 20 + 2 * size) / 2, y + 2.5 * size, 'brush2', 'red');
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'red');
-        p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
-        createButton((10 + 20 + 2 * size) / 2, (4 * y + 5 * y) / 2, 'eraser', 'lightgrey');
+        createButton(10, 2.2 * size, 'brush1', 'red');
+        createButton(10, 3.5 * size, 'brush2', 'red');
+        createButton(10, 4.8 * size, 'brush3', 'red');
+        //p5.line(10, 4 * y, 20 + 2 * size, 4 * y);
+        createButton(10, 6 * size, 'eraser', 'lightgrey');
         //p5.text();
 
         y = y/2;
@@ -200,19 +222,27 @@ const canvas =  function (p5) {
             if (mouseInCanvas()) {
                 switch (brush) {
                     case 'normal':
+                        lineColor.setAlpha(255);
                         p5.stroke(lineColor);
                         p5.strokeWeight(thickness);
                         p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
                         break;
                     case 'dot':
+                        lineColor.setAlpha(255);
                         p5.noStroke();
                         p5.fill(lineColor);
                         p5.circle(p5.mouseX, p5.mouseY, thickness);
                         break;
+                    case 'trans':
+                        lineColor.setAlpha(100);
+                        p5.stroke(lineColor);
+                        p5.strokeWeight(thickness);
+                        p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+                        break;
                     default:
                         p5.stroke(lineColor);
                         p5.strokeWeight(thickness);
-                        p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
+                        p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
                         break;
                 }
             }
@@ -225,47 +255,59 @@ const canvas =  function (p5) {
         }
         pressed = checkButton(p5.mouseX, p5.mouseY);
         console.log(pressed);
-        if (pressed === null) {
-            return;
-        } else if (pressed[0] === 'color') {
-            switch (pressed[1]) {
-                case buttons[5][1]:
-                    lineColor = colorList[0];
-                    break;
-                case buttons[6][1]:
-                    lineColor = colorList[1];
-                    break;
-                case buttons[7][1]:
-                    lineColor = colorList[2];
-                    break;
-                case buttons[8][1]:
-                    lineColor = colorList[3];
-                    break;
-                case buttons[9][1]:
-                    lineColor = colorList[4];
-                    break;
-                case buttons[10][1]:
-                    lineColor = colorList[5];
-                    break;
+        if (pressed !== null) {
+            if (pressed[0] === 'color') {
+                switch (pressed[1]) {
+                    case buttons[4][1]:
+                        lineColor = colorList[0];
+                        eraser = 0;
+                        break;
+                    case buttons[5][1]:
+                        lineColor = colorList[1];
+                        eraser = 0;
+                        break;
+                    case buttons[6][1]:
+                        lineColor = colorList[2];
+                        eraser = 0;
+                        break;
+                    case buttons[7][1]:
+                        lineColor = colorList[3];
+                        eraser = 0;
+                        break;
+                    case buttons[8][1]:
+                        lineColor = colorList[4];
+                        eraser = 0;
+                        break;
+                    case buttons[9][1]:
+                        lineColor = colorList[5];
+                        eraser = 0;
+                        break;
+                }
+            } else if (pressed[0] === 'eraser') {
+                if (eraser === 0) {
+                    eraser++;
+                }
+                lineColor = p5.color('lightgrey');
+                brush = 'normal';
+            } else if (pressed[0] === 'brush1') {
+                if (eraser === 1) {
+                    lineColor = p5.color(100, 151, 177);
+                    eraser--;
+                }
+                brush = 'normal';
+            } else if (pressed[0] === 'brush2') {
+                if (eraser === 1) {
+                    lineColor = p5.color(100, 151, 177);
+                    eraser--;
+                }
+                brush = 'dot';
+            } else if (pressed[0] === 'brush3') {
+                if (eraser === 1) {
+                    lineColor = p5.color(100, 151, 177);
+                    eraser--;
+                }
+                brush = 'trans';
             }
-        } else if (pressed[0] === 'eraser') {
-            if (eraser === 0) {
-                eraser++;
-            }
-            lineColor = p5.color('lightgrey');
-            brush = 'normal';
-        } else if (pressed[0] === 'brush1') {
-            if (eraser === 1) {
-                lineColor = p5.color(100, 151, 177);
-                eraser--;
-            }
-            brush = 'normal';
-        } else if (pressed[0] === 'brush2') {
-            if (eraser === 1) {
-                lineColor = p5.color(100, 151, 177);
-                eraser--;
-            }
-            brush = 'dot';
         }
     }
 }

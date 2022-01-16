@@ -61,10 +61,9 @@ body {
 
 .finalProject .text-container .text {
     width: 50%;
-    align-items: center;
-    height: 100%;
+    align-items: normal;
+    height: 90%;
 }
-
 b {
     color: inherit;
 }
