@@ -100,6 +100,12 @@ const opdracht_2 = function (p5) {
         p5.ellipse(p5.width / 2, p5.height / 2 + 25, 20, 20);
 
     }
+
+    p5.mousePressed = function () {
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            return false;
+        }
+    }
 }
 
 const opdracht_3 = function (p5) {
