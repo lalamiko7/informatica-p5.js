@@ -309,6 +309,8 @@ const canvas =  function (p5) {
                 brush = 'trans';
             }
         }
+
+        return false;
     }
 }
 
