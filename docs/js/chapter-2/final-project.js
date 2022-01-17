@@ -41,6 +41,8 @@ const canvas =  function (p5) {
 
         p5.strokeWeight(5);
         p5.stroke('#B3CDE0');
+        color = p5.color(color);
+        color.setAlpha(255);
         p5.fill(color);
 
         if (id === 'eraser') {

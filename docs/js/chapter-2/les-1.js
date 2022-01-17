@@ -2,10 +2,20 @@ let elementWidth;
 let elementHeight;
 
 const opdracht_1 = function (p5) {
+    let one;
+    let two;
+
+    let x;
+    let y;
+
     p5.setup = function () {
         elementWidth = document.getElementById('canvas1').clientWidth;
         elementHeight = document.getElementById('canvas1').clientHeight;
         p5.createCanvas(elementWidth, elementHeight);
+
+        one = two = p5.color('#6497B1');
+        y = false;
+        x = 10;
     }
 
     p5.draw = function () {
@@ -14,27 +24,39 @@ const opdracht_1 = function (p5) {
         p5.fill('lightgrey');
         //when the x location of my mouse is greater than 300
         //turn the background black
-        if (p5.mouseX > 300) {
-            p5.fill(100, 150, 100);
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            console.log('huts');
+            if (p5.mouseX > 150) {
+                one = p5.color(100, 150, 100);
+            } else if (p5.mouseY > 60) {
+                one = p5.color(100, 150, 100);
+            } else {
+                one = p5.color('lightgrey');
+            }
+
+            if (p5.mouseX < 200) {
+                x = 60;
+            } else {
+                x = 10;
+            }
+            if (p5.mouseY < 40) {
+                two = p5.color(100, 150, 100);
+            } else {
+                two = p5.color('#6497B1');
+            }
+
+            if (p5.mouseX > p5.width - 50 && p5.mouseY < 50 || p5.mouseX > p5.width - 50 && p5.mouseY > p5.height - 50) {
+                y = true;
+            } else {
+                y = false;
+            }
         }
-        if (p5.mouseY > 60) {
-            p5.fill(100, 150, 100);
-        }
 
-        p5.rect(0, 0, 600, 120);
+        p5.fill(one);
+        p5.rect(0, 0, 300, 120);
 
-        let x = 10; //set the initial size to 10
-
-
-        p5.fill(50, 100, 150); //set the initial fill to red
-
-        if (p5.mouseX < 200) {
-            x = 60;
-        }
-        if (p5.mouseY < 40) {
-            p5.fill(100, 150, 100);
-        }
-        if (p5.mouseX > 590 && p5.mouseY > 590 || p5.mouseX > 590 && p5.mouseY < 110) {
+        p5.fill(two);
+        if (y) {
             p5.ellipse(p5.width / 2, p5.height / 2, x, x);
         } else {
             p5.rect(p5.width / 2, p5.height / 2, x, x);
@@ -55,25 +77,26 @@ const opdracht_2 = function (p5) {
         p5.rectMode(p5.CENTER);
         p5.fill(102, 153, 255);
 
-        if (p5.mouseX > 100){
-            p5.rect(150, 60, 20, 20);
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            if (p5.mouseX > 100) {
+                p5.rect(150, 60, 20, 20);
+            }
+            if (p5.mouseX > 200) {
+                p5.rect(250, 60, 20, 20);
+            }
+            if (p5.mouseX > 300) {
+                p5.rect(350, 60, 20, 20);
+            }
+            if (p5.mouseX > 400) {
+                p5.rect(450, 60, 20, 20);
+            }
+            if (p5.mouseX > 500) {
+                p5.rect(550, 60, 20, 20);
+            }
+            if (p5.mouseX > 0) {
+                p5.rect(50, 60, 20, 20);
+            }
         }
-        if (p5.mouseX > 200){
-            p5.rect(250, 60, 20, 20);
-        }
-        if (p5.mouseX > 300){
-            p5.rect(350, 60, 20, 20);
-        }
-        if (p5.mouseX > 400){
-            p5.rect(450, 60, 20, 20);
-        }
-        if (p5.mouseX > 500){
-            p5.rect(550, 60, 20,20);
-        }
-        if (p5.mouseX > 0){
-            p5.rect(50, 60, 20, 20);
-        }
-
 
         let redLight = 'white';
         let yellowLight = 'white';
@@ -82,14 +105,14 @@ const opdracht_2 = function (p5) {
         p5.fill('darkgrey');
         p5.rect(p5.width / 2, p5.height / 2,50,100);
 
-        if (p5.mouseY > (p5.height / 2 + 20)) {
-            greenLight = 'green'
-        }
-        else if (p5.mouseY > p5.height / 2 - 20){
-            yellowLight = 'yellow';
-        }
-        else {
-            redLight = 'red';
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            if (p5.mouseY > (p5.height / 2 + 20)) {
+                greenLight = 'green'
+            } else if (p5.mouseY > p5.height / 2 - 20) {
+                yellowLight = 'yellow';
+            } else {
+                redLight = 'red';
+            }
         }
 
         p5.fill(redLight);
@@ -155,10 +178,12 @@ const opdracht_4 = function (p5) {
     }
 
     p5.draw = function () {
-        let weight = p5.dist(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY) * 1.1;
-        p5.strokeWeight(weight);
-        p5.stroke('#6497B1');
-        p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            let weight = p5.dist(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY) * 1.1;
+            p5.strokeWeight(weight);
+            p5.stroke('#6497B1');
+            p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+        }
     }
 
     p5.mousePressed = function () {
@@ -180,12 +205,15 @@ const opdracht_5 = function (p5) {
 
         p5.background('lightgrey');
         z = p5.random(255);
+        x = p5.random(255);
+        y = p5.random(255);
     }
 
     p5.draw = function () {
-        x = p5.map(p5.mouseX, 0, p5.width, 0, 255);
-        y = p5.map(p5.mouseY, 0, p5.height, 0, 255);
-
+        if (p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height) {
+            x = p5.map(p5.mouseX, 0, p5.width, 0, 255);
+            y = p5.map(p5.mouseY, 0, p5.height, 0, 255);
+        }
         p5.background(x, y, z);
     }
 }
