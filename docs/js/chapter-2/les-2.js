@@ -233,7 +233,7 @@ const opdracht_3 = function (p5) {
 // This function activates if the mouse is pressed
     p5.mousePressed = function () {
         if (!(p5.mouseX >= 0 && p5.mouseX <= p5.width && p5.mouseY >= 0 && p5.mouseY <= p5.height)) {
-            return;
+            return false;
         }
 
         pressed = checkButton(p5.mouseX, p5.mouseY); // Check if a button is pressed and store that result
@@ -260,6 +260,7 @@ const opdracht_3 = function (p5) {
         } else if (pressed === "Opnieuw spelen") {
             //console.log('begin maar');
             current = 0;
+            tries = 0;
             code = generateCode(3, false);
             inputArray = [];
             output = realInputArray = [];
