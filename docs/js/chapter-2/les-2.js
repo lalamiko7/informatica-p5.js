@@ -450,7 +450,7 @@ const opdracht_3 = function (p5) {
                     }
                 }
             }
-            if (two >= 3) {
+            if (colorsArray[2] === redArray) {
                 current = 69;
             } else {
                 current = 0;
