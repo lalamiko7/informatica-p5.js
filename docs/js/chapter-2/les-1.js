@@ -157,7 +157,7 @@ const opdracht_4 = function (p5) {
     p5.draw = function () {
         let weight = p5.dist(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY) * 1.1;
         p5.strokeWeight(weight);
-        p5.stroke('#6894b4');
+        p5.stroke('#6497B1');
         p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
     }
 
